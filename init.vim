@@ -26,6 +26,14 @@ call minpac#add('yuezk/vim-js')
 "visualizes undo history and makes it easier to browse and switch between different undo branches
 call minpac#add('mbbill/undotree')
 
+"provides mappings to easily delete, change and add surroundings in pairs
+"e.g. cs"' change surround " with '
+call minpac#add('tpope/vim-surround')
+"Use `gcc` to comment out a line (takes a count),
+"`gc` to comment out the target of a motion (for example, `gcap` to comment out a paragraph),
+"`gc` in visual mode to comment out the selection
+call minpac#add('tpope/vim-commentary')
+
 "Lint
 "call minpac#add('dense-analysis/ale')
 "For JavaScript files, use `eslint` (and only eslint)
