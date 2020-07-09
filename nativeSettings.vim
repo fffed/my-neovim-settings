@@ -26,6 +26,9 @@ set scrolloff=8
 "shows the absolute number for the current line, and relative numbers for other lines
 "set relativenumber
 
+"set languages for spell checking
+set spelllang=en_us,ru_yo
+
 "enable relative numbers only in Normal mode, and absolute numbers only in Insert mode
 "augroup toggle_relative_number
   "autocmd InsertEnter * :setlocal norelativenumber
@@ -50,4 +53,7 @@ set clipboard+=unnamedplus
 "Maintain undo history between sessions
 set undofile
 
-"syntax enable
+"Explorer with tree like style
+let g:netrw_liststyle = 3
+"Explorer stays in his window, file is opened within new one
+"let g:netrw_browse_split = 4
