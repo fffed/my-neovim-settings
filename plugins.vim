@@ -66,8 +66,8 @@ call minpac#add('mhinz/vim-grepper')
 call minpac#add('itchyny/lightline.vim')
 
 "Themes
-call minpac#add('gruvbox-community/gruvbox')
-"call minpac#add('mhartington/oceanic-next')
+"call minpac#add('gruvbox-community/gruvbox')
+call minpac#add('mhartington/oceanic-next')
 ""call minpac#add('kaicataldo/material.vim')
 "call minpac#add('blueshirts/darcula')
 "call minpac#add('ghifarit53/tokyonight-vim')
