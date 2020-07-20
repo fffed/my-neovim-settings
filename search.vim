@@ -1,5 +1,18 @@
+"Ctags
+let g:gutentags_add_default_project_roots=0
+let g:gutentags_project_root=['package.json', '.git']
+let g:gutentags_cache_dir = expand('~/.cache/nvim/ctags/')
+"To clear cache
+command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
+"Make Gutentags generate in most cases
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+
+
 "filter out files that are marked ignore in Git. When used in a Git repository, this command does include files that have yet to be added to the Git index. When used outside of a version control repository, it falls back to listing all files. Ripgrep(rg) should be installed on a system level 
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
+let $FZF_DEFAULT_COMMAND = 'rg --files'
 "turn on preview window
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
@@ -54,3 +67,5 @@ nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 "Search for the current selection
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
+
+"let g:codequery_find_text_cmd = 'GrepperGrep'

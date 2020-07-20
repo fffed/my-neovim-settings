@@ -6,7 +6,8 @@
         "json"
     ],
     "cSpell.userWords": [
-        "epam"
+      "epam",
+      "gruvbox"
     ],
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,

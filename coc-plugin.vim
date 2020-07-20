@@ -1,8 +1,12 @@
 "COC extensions
-let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-eslint', 'coc-snippets', 'coc-actions', 'coc-spell-checker']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-eslint', 'coc-snippets', 'coc-stylelintplus', 'coc-spell-checker']
 
 " Give more space for displaying messages.
 set cmdheight=2
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -81,9 +85,11 @@ nmap <Leader><C-f> <Plug>(coc-format-selected)
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType typescript,javascript,javascriptreact,typescriptreact,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  autocmd FileType typescript,javascript,javascriptreact,typescriptreact let b:coc_root_patterns =
+              \ ['package.json', 'tsconfig.js', 'dist']
 augroup end
 
 " Applying codeAction to the selected region.

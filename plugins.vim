@@ -31,7 +31,8 @@ call minpac#add('tpope/vim-commentary')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('airblade/vim-gitgutter')
 call minpac#add('junegunn/gv.vim')
-call minpac#add('lambdalisue/gina.vim')
+call minpac#add('christoomey/vim-conflicted')
+"call minpac#add('lambdalisue/gina.vim')
 
 "Sessions saving
 call minpac#add('tpope/vim-obsession')
@@ -39,19 +40,27 @@ call minpac#add('tpope/vim-obsession')
 "Text sorting
 "gsip => Sort the current paragraph
 "gsi( => Sort within parenthesis. (b, c, a) would become (a, b, c)
-call minpac#add('christoomey/vim-sort-motion')
+"call minpac#add('christoomey/vim-sort-motion')
 
 "for Abbrivations, Substitutions and Coercion
 "camelCase (crc), snake_case (crs), UPPER_CASE (crucamelCase (crc), snake_case (crs), UPPER_CASE (cru))
 call minpac#add('tpope/vim-abolish')
 
 "-----SEARCH
+"ctags
+call minpac#add('ludovicchabant/vim-gutentags')
+
 "command-line fuzzy finder, fzf should be installed on a system level
 call minpac#add('junegunn/fzf', { 'do': { -> fzf#install() } })
 "provides fuzzy matchers for a variety of sources, including the buffer list, command history, search history, helptags, and many more.
 call minpac#add('junegunn/fzf.vim')
 "While the built-in :grep command runs synchronously, the Grepper plugin makes it possible to run grep asynchronously
 call minpac#add('mhinz/vim-grepper')
+
+"search source code by codequery(replace of ctaqs and cscope)
+"call minpac#add('Shougo/unite.vim')
+"call minpac#add('devjoe/vim-codequery')
+
 
 "Status line
 call minpac#add('itchyny/lightline.vim')
@@ -61,18 +70,21 @@ call minpac#add('gruvbox-community/gruvbox')
 "call minpac#add('mhartington/oceanic-next')
 ""call minpac#add('kaicataldo/material.vim')
 "call minpac#add('blueshirts/darcula')
+"call minpac#add('ghifarit53/tokyonight-vim')
 
 
 "COC
 call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
 
 "-----SYNTAX
-call minpac#add('yuezk/vim-js')
+"call minpac#add('yuezk/vim-js')
+call minpac#add('othree/yajs.vim')
 call minpac#add('maxmellon/vim-jsx-pretty')
 "let g:vim_jsx_pretty_template_tags = []
 "let g:vim_jsx_pretty_disable_tsx = 1
 call minpac#add('herringtondarkholme/yats.vim')
 
+"call minpac#add('pangloss/vim-javascript')
 "call minpac#add('leafgarland/typescript-vim')
 "call minpac#add('peitalin/vim-jsx-typescript')
 "include .jsx files as typescript.tsx files for syntax highlighting.
@@ -81,7 +93,8 @@ call minpac#add('herringtondarkholme/yats.vim')
 call minpac#add('styled-components/vim-styled-components')
 
 "call minpac#add('sheerun/vim-polyglot')
-"call minpac#add('pangloss/vim-javascript')
 "call minpac#add('hail2u/vim-css3-syntax')
 "call minpac#add('groenewege/vim-less')
 
+"colors preview
+call minpac#add('ap/vim-css-color')

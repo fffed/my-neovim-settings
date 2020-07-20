@@ -9,13 +9,18 @@ set nowrap
 "wrap lines at convenient points, avoid wrapping a line in the middle of a word(only for when wrap is enabled)
 "set linebreak
 "width for vertical linebreak
-"set colorcolumn=120
+set colorcolumn=120
 "highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+
+"disable linebreaks by max width by ftplugins
+set textwidth=0
 
 "horizontal splits will be below
 set splitbelow
 "vertical splits will be to the right
 set splitright
+"Diff vertically instead of horizontally
+set diffopt+=vertical
 
 "highlighting of the current line
 set cursorline
@@ -34,6 +39,9 @@ set spelllang=en_us,ru_yo
   "autocmd InsertEnter * :setlocal norelativenumber
   "autocmd InsertLeave * :setlocal relativenumber
 
+"ignore files matching these patterns when opening files based on a glob pattern 
+set wildignore+=*/node_modules/**/*
+
 "--<TAB>--
 "number of spaces within Tab, default=8
 set tabstop=4 
@@ -45,6 +53,8 @@ set shiftwidth=4
 set expandtab
 "turn on smart indenting
 set smartindent
+"when shifting lines, round the indentation to the nearest multiple of 'shiftwidth'
+set shiftround
 "--</TAB>--
 
 "To ALWAYS use the clipboard for ALL operations (instead of interacting with the '+' and/or '*' registers explicitly)
@@ -57,3 +67,7 @@ set undofile
 let g:netrw_liststyle = 3
 "Explorer stays in his window, file is opened within new one
 "let g:netrw_browse_split = 4
+"Explorer window size
+let g:netrw_winsize=25
+"Turn off banner
+let g:netrw_banner=0
