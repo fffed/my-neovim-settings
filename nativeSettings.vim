@@ -63,11 +63,3 @@ set clipboard+=unnamedplus
 "Maintain undo history between sessions
 set undofile
 
-"Explorer with tree like style
-let g:netrw_liststyle = 3
-"Explorer stays in his window, file is opened within new one
-"let g:netrw_browse_split = 4
-"Explorer window size
-let g:netrw_winsize=25
-"Turn off banner
-let g:netrw_banner=0

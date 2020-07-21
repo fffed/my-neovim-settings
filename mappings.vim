@@ -55,8 +55,6 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-nnoremap <F2> :call ToggleNetrw()<CR>
-
 "Undo plugin mappings
 nnoremap <F3> :UndotreeToggle<CR>
 

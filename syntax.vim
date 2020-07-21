@@ -1,21 +1,25 @@
-function! ChangeColors()
-    "highlight javascriptImport guifg=#fe8019
-    "highlight typescriptReserved guifg=#fe8019
+function! MyHighlights() abort
+   highlight! link cssPositioningProp GruvboxAqua
+   highlight! link cssMediaProp GruvboxAqua
+   highlight! link cssBorderProp GruvboxAqua
+   highlight! link javascriptReserved GruvboxRed
+   highlight! link styledNestedRegion GruvboxAqua
 endfunction
 
-"peitalin/vim-jsx-typescript
-"include .jsx files as typescript.tsx files for syntax highlighting.
-autocmd BufNewFile,BufRead *.js,*.jsx call ChangeColors() 
+augroup MyColors
+    autocmd!
+    autocmd ColorScheme * call MyHighlights()
+augroup END
 
-"highlight tsxTag guifg=#fabd2f
-"highlight tsxTagName guifg=#fabd2f
-"highlight tsxComponentName guifg=#fabd2f
-"highlight tsxCloseComponentName guifg=#fabd2f
-"
-"highlight tsxCloseString guifg=#fabd2f
-"highlight tsxCloseTag guifg=#fabd2f
-"highlight tsxCloseTagName guifg=#fabd2f
-"highlight tsxAttributeBraces guifg=#fabd2f
-"highlight tsxEqual guifg=#fabd2f
-"
-"highlight tsxAttrib guifg=#F8BD7F cterm=italic
+"Showing highlight groups
+nmap <leader>sp :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+map <F7> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>

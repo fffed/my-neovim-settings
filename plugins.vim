@@ -66,8 +66,8 @@ call minpac#add('mhinz/vim-grepper')
 call minpac#add('itchyny/lightline.vim')
 
 "Themes
-"call minpac#add('gruvbox-community/gruvbox')
-call minpac#add('mhartington/oceanic-next')
+call minpac#add('gruvbox-community/gruvbox')
+"call minpac#add('mhartington/oceanic-next')
 ""call minpac#add('kaicataldo/material.vim')
 "call minpac#add('blueshirts/darcula')
 "call minpac#add('ghifarit53/tokyonight-vim')
@@ -98,3 +98,6 @@ call minpac#add('styled-components/vim-styled-components')
 
 "colors preview
 call minpac#add('ap/vim-css-color')
+"view the latest version of the packages you depend on 
+"call minpac#add('meain/vim-package-info')
+

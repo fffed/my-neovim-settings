@@ -2,7 +2,7 @@
 set noshowmode
 
 let g:lightline = {
-      \ 'colorscheme': 'deus',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified'] ]

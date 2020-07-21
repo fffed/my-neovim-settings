@@ -25,23 +25,6 @@ augroup autoSourceVim
 augroup END
 
 
-let g:NetrwIsOpen=0
-function! ToggleNetrw()
-    if g:NetrwIsOpen
-        let i = bufnr("$")
-        while (i >= 1)
-            if (getbufvar(i, "&filetype") == "netrw")
-                silent exe "bwipeout " . i 
-            endif
-            let i-=1
-        endwhile
-        let g:NetrwIsOpen=0
-    else
-        let g:NetrwIsOpen=1
-        silent Lexplore
-    endif
-endfunction
-
 "add any cscope database in current directory
 if filereadable("cscope.out")
     cs add cscope.out  
@@ -49,3 +32,4 @@ if filereadable("cscope.out")
 elseif $CSCOPE_DB != ""
     cs add $CSCOPE_DB
 endif
+
