@@ -3,6 +3,7 @@ function! MyHighlights() abort
    highlight! link cssMediaProp GruvboxAqua
    highlight! link cssBorderProp GruvboxAqua
    highlight! link javascriptReserved GruvboxRed
+   highlight! link javascriptDebugger GruvboxRedBold
    highlight! link styledNestedRegion GruvboxAqua
 endfunction
 

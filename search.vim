@@ -46,6 +46,7 @@ let g:fzf_colors =
 
 "opens the fzf picker interface for Search
 nnoremap <Leader>f :<C-u>Files<CR>
+nnoremap <Leader>b :<C-u>Buffers<CR>
 
 "While the built-in :grep command runs synchronously, the Grepper plugin makes it possible to run grep asynchronously
 let g:grepper = {}
