@@ -3,11 +3,13 @@
         "css",
         "markdown",
         "html",
-        "json"
+        "json",
+        "javascript",
+        "javascriptreact"
     ],
     "cSpell.userWords": [
-      "epam",
-      "gruvbox"
+        "epam",
+        "gruvbox"
     ],
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,

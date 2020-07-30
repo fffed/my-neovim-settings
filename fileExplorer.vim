@@ -11,7 +11,7 @@ function! ToggleNetrw()
         let g:NetrwIsOpen=0
     else
         let g:NetrwIsOpen=1
-        silent Vexplore
+        silent Lexplore
     endif
 endfunction
 
