@@ -59,7 +59,7 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 "Undo plugin mappings
-nnoremap <F3> :UndotreeToggle<CR>
+nnoremap <F4> :UndotreeToggle<CR>
 
 "using cscope
 nnoremap <F9> :!find . \! -path './node_modules/*' -iname '*.js' -o -iname '*.jsx' -o -iname '*.ts' -o -iname '*.tsx' > cscope.files<CR>
