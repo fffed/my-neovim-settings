@@ -38,6 +38,7 @@ set spelllang=en_us,ru_yo
 "augroup toggle_relative_number
   "autocmd InsertEnter * :setlocal norelativenumber
   "autocmd InsertLeave * :setlocal relativenumber
+"augroup END
 
 "ignore files matching these patterns when opening files based on a glob pattern 
 set wildignore+=*/node_modules/**/*
@@ -63,3 +64,9 @@ set clipboard+=unnamedplus
 "Maintain undo history between sessions
 set undofile
 
+"enable spell only if file type is normal text
+let spellable = ['markdown', 'gitcommit', 'txt', 'text']
+autocmd BufEnter * if index(spellable, &ft) < 0 | set nospell | else | set spell | endif
+
+"open help in vertical split
+autocmd FileType help wincmd L

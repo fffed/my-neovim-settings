@@ -7,7 +7,7 @@ function! VexToggle(dir)
 endfunction
 
 function! VexOpen(dir)
-  let vex_width = 25
+  let vex_width = 30
 
  "we use vimscript’s string concatenation operator (.) to compose the Vexplore call.
   execute "Vexplore " . a:dir
@@ -64,7 +64,7 @@ let g:netrw_liststyle = 3
 "Explorer stays in his window, file is opened within new one
 let g:netrw_browse_split = 4
 "Explorer window size
-let g:netrw_winsize=25
+let g:netrw_winsize=30
 "Turn off banner
 let g:netrw_banner=0
 

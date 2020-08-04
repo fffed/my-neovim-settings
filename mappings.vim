@@ -8,12 +8,15 @@ nnoremap <Space> <Nop>
 nnoremap Y y$
 
 "to move to the first non-blank character
-nnoremap <Leader>h ^
+"nnoremap <Leader>h ^
 "to move to the last non-blank character
-nnoremap <Leader>l g_
+"nnoremap <Leader>l g_
+
+"close current buffer
+nnoremap <leader>q :<C-u>bd<CR>
 
 "Toggle vim's spell checking
-nnoremap <silent> <Leader>s :set spell!<CR>
+nnoremap <silent> <Leader>s :<C-u>set spell!<CR>
 
 "Turn off highliting on ESC press
 map <esc> :noh<cr>
@@ -28,9 +31,9 @@ cnoremap kj <C-C>
 vnoremap X "_d
 
 "Move to next buffer
-nnoremap <TAB> :bnext<CR>
+nnoremap <TAB> :<C-u>bnext<CR>
 "Move to previous buffer
-nnoremap <S-TAB> :bprevious<CR>
+nnoremap <S-TAB> :<C-u>bprevious<CR>
 
 "remap ESC key in terminal mode so we can send an Escape key to the terminal by pressing <C-v><Esc> (mnemonic: Verbatim escape).
 if has('nvim')
@@ -59,7 +62,7 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 "Undo plugin mappings
-nnoremap <F4> :UndotreeToggle<CR>
+nnoremap <F4> :<C-u>UndotreeToggle<CR>
 
 "using cscope
 nnoremap <F9> :!find . \! -path './node_modules/*' -iname '*.js' -o -iname '*.jsx' -o -iname '*.ts' -o -iname '*.tsx' > cscope.files<CR>
