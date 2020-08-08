@@ -42,10 +42,10 @@ if has('nvim')
 endif
 
 "Windows navigation
-nnoremap <Leader>wh <C-w>h
-nnoremap <Leader>wj <C-w>j
-nnoremap <Leader>wk <C-w>k
-nnoremap <Leader>wl <C-w>l
+"nnoremap <Leader>wh <C-w>h
+"nnoremap <Leader>wj <C-w>j
+"nnoremap <Leader>wk <C-w>k
+"nnoremap <Leader>wl <C-w>l
 if has('nvim')
   tnoremap <Leader>wh <c-\><c-n><c-w>h
   tnoremap <Leader>wj <c-\><c-n><c-w>j

@@ -62,6 +62,7 @@ function! PackagerInit() abort
   
   "Themes
   call packager#add('gruvbox-community/gruvbox')
+  "call packager#add('sainnhe/gruvbox-material')
   "call packager#add('mhartington/oceanic-next')
   "call packager#add('kaicataldo/material.vim')
   "call packager#add('blueshirts/darcula')
