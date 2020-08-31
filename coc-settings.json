@@ -13,5 +13,6 @@
     ],
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-    "eslint.autoFixOnSave": true
+    "eslint.autoFixOnSave": true,
+    "stylelintplus.cssInJs": true
 }

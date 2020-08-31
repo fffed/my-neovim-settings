@@ -68,6 +68,7 @@ function! PackagerInit() abort
   "call packager#add('blueshirts/darcula')
   "call packager#add('doums/darcula')
   "call packager#add('ghifarit53/tokyonight-vim')
+  call packager#add('lifepillar/vim-solarized8', { 'type': 'opt' })
   
 
   "COC

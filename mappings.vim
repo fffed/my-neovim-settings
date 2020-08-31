@@ -42,6 +42,7 @@ if has('nvim')
 endif
 
 "Windows navigation
+nnoremap <Leader>w <C-w>w
 "nnoremap <Leader>wh <C-w>h
 "nnoremap <Leader>wj <C-w>j
 "nnoremap <Leader>wk <C-w>k
