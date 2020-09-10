@@ -1,5 +1,5 @@
 "COC extensions
-let g:coc_global_extensions = ['coc-tsserver', 'coc-styled-components', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-eslint', 'coc-snippets', 'coc-stylelintplus', 'coc-spell-checker']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-styled-components', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-eslint', 'coc-stylelintplus', 'coc-spell-checker']
 
 " Give more space for displaying messages.
 set cmdheight=2

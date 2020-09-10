@@ -33,3 +33,22 @@ elseif $CSCOPE_DB != ""
     cs add $CSCOPE_DB
 endif
 
+
+function! InsertSkeleton(extention) abort
+  let filename = expand('%')
+  let componetName = expand('%:r')
+
+  " abort on non-empty buffer or exitant file
+  if !(line('$') == 1 && getline('$') == '') || filereadable(filename)
+    return
+  endif
+
+execute '0r $HOME/.config/nvim/templates/skeleton.' . a:extention .''
+            \ .'| %s/Component/' . componetName . '/g'
+            \ .'| /function '
+endfunction
+
+augroup templates
+    autocmd BufNewFile *.jsx call InsertSkeleton('jsx')
+    autocmd BufNewFile *.tsx call InsertSkeleton('tsx')
+augroup END

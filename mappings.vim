@@ -7,6 +7,9 @@ nnoremap <Space> <Nop>
 "make "Y" to work from the cursor to the end of line (which is more logical, but not Vi-compatible)
 nnoremap Y y$
 
+"don't copy single letter deletes
+"nnoremap x "_x   "brake letters swapping
+
 "to move to the first non-blank character
 "nnoremap <Leader>h ^
 "to move to the last non-blank character
