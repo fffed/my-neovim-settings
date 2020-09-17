@@ -7,7 +7,7 @@ const ComponentStyled = styled.div`
 `;
 
 type ComponentProps = {
-    children: React.ReactNode,
+    children: React.ReactNode;
 };
 
 export default function Component({ children }: ComponentProps): JSX.Element {

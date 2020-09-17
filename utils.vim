@@ -36,7 +36,7 @@ endif
 
 function! InsertSkeleton(extention) abort
   let filename = expand('%')
-  let componetName = expand('%:r')
+  let componetName = expand('%:t:r')
 
   " abort on non-empty buffer or exitant file
   if !(line('$') == 1 && getline('$') == '') || filereadable(filename)
