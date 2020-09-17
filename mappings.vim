@@ -15,8 +15,8 @@ nnoremap Y y$
 "to move to the last non-blank character
 "nnoremap <Leader>l g_
 
-"close current buffer
-nnoremap <leader>q :<C-u>bd<CR>
+"close current buffer without closing its window: Close Location windows, if exist, switch to the previous view buffer, and then close the last switched buffer.
+nnoremap <silent> <leader>q :lclose<bar>b#<bar>bd #<CR>
 
 "Toggle vim's spell checking
 nnoremap <silent> <Leader>s :<C-u>set spell!<CR>
