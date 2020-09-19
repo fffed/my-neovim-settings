@@ -18,3 +18,5 @@ endif
 
 let g:undotree_WindowLayout=2
 
+source $HOME/.config/nvim/statusLine.vim
+
