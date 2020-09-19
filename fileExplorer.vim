@@ -24,7 +24,7 @@ let g:netrw_liststyle = 3
 "Explorer stays in his window, file is opened within new one
 let g:netrw_browse_split = 4
 "Explorer window size
-let g:netrw_winsize=30
+let g:netrw_winsize=20
 "Turn off banner
 let g:netrw_banner=0
 

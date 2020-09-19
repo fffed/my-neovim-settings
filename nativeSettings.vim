@@ -26,7 +26,7 @@ set diffopt+=vertical
 set cursorline
 
 "add scroll offset while scrolling
-set scrolloff=8
+set scrolloff=6
 
 "shows the absolute number for the current line, and relative numbers for other lines
 "set relativenumber
