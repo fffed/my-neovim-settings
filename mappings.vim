@@ -16,7 +16,7 @@ nnoremap Y y$
 "nnoremap <Leader>l g_
 
 "close current buffer without closing its window: Close Location windows, if exist, switch to the previous view buffer, and then close the last switched buffer.
-nnoremap <silent> <leader>q :lclose<bar>b#<bar>bd #<CR>
+nnoremap <silent> <leader>q :lclose<bar>bprevious<bar>bdelete #<CR>
 
 "Toggle vim's spell checking
 nnoremap <silent> <Leader>s :<C-u>set spell!<CR>
@@ -32,6 +32,9 @@ cnoremap kj <C-C>
 
 "Delete selected text to BlackHole register
 vnoremap X "_d
+
+"Insert current path relative to `cwd`
+cnoremap <C-h> <C-R>=expand('%:h').'/'<CR>
 
 "Move to next buffer
 nnoremap <TAB> :<C-u>bnext<CR>
