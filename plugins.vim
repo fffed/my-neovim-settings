@@ -22,6 +22,7 @@ function! PackagerInit() abort
   "`gc` to comment out the target of a motion (for example, `gcap` to comment out a paragraph),
   "`gc` in visual mode to comment out the selection
   call packager#add('tpope/vim-commentary')
+
   "git
   call packager#add('tpope/vim-fugitive')
   call packager#add('airblade/vim-gitgutter')
@@ -62,45 +63,47 @@ function! PackagerInit() abort
   
   "Themes
   call packager#add('gruvbox-community/gruvbox')
+  call packager#add('lifepillar/vim-solarized8', { 'type': 'opt' })
+  "call packager#add('mhartington/oceanic-next', { 'type': 'opt' }) "no JSX
+  "call packager#add('ghifarit53/tokyonight-vim', {'type': 'opt' })
   "call packager#add('sainnhe/gruvbox-material')
-  "call packager#add('mhartington/oceanic-next')
   "call packager#add('kaicataldo/material.vim')
   "call packager#add('blueshirts/darcula')
   "call packager#add('doums/darcula')
-  "call packager#add('ghifarit53/tokyonight-vim')
-  call packager#add('lifepillar/vim-solarized8', { 'type': 'opt' })
+  "call packager#add('rakr/vim-one', { 'type': 'opt' })
 
 
   "COC
   call packager#add('neoclide/coc.nvim', {'branch': 'release'})
   
+  "colors preview
+  call packager#add('ap/vim-css-color')
+
+  "LOADED ONLY FOR SPECIFIC FILETYPES ON DEMAND. REQUIRES AUTOCOMMANDS BELOW!!!
+   "view the latest version of the packages you depend on 
+   call packager#add('meain/vim-package-info', { 'do': 'npm install', 'type': 'opt' })
+  
   "-----SYNTAX
-  "call packager#add('yuezk/vim-js')
-  call packager#add('othree/yajs.vim')
-  call packager#add('maxmellon/vim-jsx-pretty')
+  "call packager#add('yuezk/vim-js', { 'type': 'opt' })
+  "call packager#add('othree/yajs.vim', { 'type': 'opt' })
+  call packager#add('maxmellon/vim-jsx-pretty', { 'type': 'opt' })
   "let g:vim_jsx_pretty_template_tags = []
   "let g:vim_jsx_pretty_disable_tsx = 1
-  call packager#add('herringtondarkholme/yats.vim')
+  "only for tsx/jsx files and better highlighting as it's already included in neovim
+  call packager#add('herringtondarkholme/yats.vim', { 'type': 'opt' })
   
   "call packager#add('pangloss/vim-javascript')
-  "call packager#add('leafgarland/typescript-vim')
+  "call packager#add('leafgarland/typescript-vim', { 'type': 'opt' })
   "call packager#add('peitalin/vim-jsx-typescript')
   "include .jsx files as typescript.tsx files for syntax highlighting.
   "autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
   
-  call packager#add('styled-components/vim-styled-components')
+  "call packager#add('styled-components/vim-styled-components')
   "call packager#add('sheerun/vim-polyglot')
   "call packager#add('hail2u/vim-css3-syntax')
   "call packager#add('groenewege/vim-less')
-  
-  "colors preview
-  call packager#add('ap/vim-css-color')
-  "view the latest version of the packages you depend on 
-  "call packager#add('meain/vim-package-info')
 
-  "Loaded only for specific filetypes on demand. Requires autocommands below.
 "  call packager#add('kristijanhusak/vim-js-file-import', { 'do': 'npm install', 'type': 'opt' })
-"  call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries', 'type': 'opt' })
 "  call packager#add('neoclide/coc.nvim', { 'do': function('InstallCoc') })
 "  call packager#add('sonph/onehalf', {'rtp': 'vim/'})
 endfunction
@@ -114,7 +117,12 @@ command! PackagerStatus call PackagerInit() | call packager#status()
 "Load plugins only for specific filetype
 "Note that this should not be done for plugins that handle their loading using ftplugin file.
 "More info in :help pack-add
-"augroup packager_filetype
-"  autocmd!
-"  autocmd FileType javascript, javascriptreact, typescript, typescriptreact packadd vim-styled-components
-"augroup END
+augroup packager_filetype
+  autocmd!
+  autocmd BufNewFile,BufRead *.js set filetype=typescript
+  autocmd BufNewFile,BufRead *.jsx set filetype=typescriptreact
+  " autocmd FileType javascript,javascriptreact packadd yajs.vim
+  autocmd FileType javascriptreact,typescriptreact packadd vim-jsx-pretty
+  autocmd FileType typescriptreact packadd yats.vim
+  autocmd FileType json packadd vim-package-info
+augroup END
