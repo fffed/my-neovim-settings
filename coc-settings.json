@@ -1,9 +1,9 @@
 {
+    "diagnostic.virtualText": true,
     "coc.preferences.formatOnSaveFiletypes": [
         "css",
         "markdown",
         "html",
-        "json",
         "javascript",
         "javascriptreact"
     ],
