@@ -83,26 +83,31 @@ endfunction
 nnoremap <Leader>f :<C-u>Files<CR>
 nnoremap <Leader>b :<C-u>Buffers<CR>
 nnoremap <Leader>/ :<C-u>RG<CR>
+nnoremap <Leader>? :<C-u>History<CR>
+"Git files (git status)
+nnoremap <Leader>g :<C-u>:GFiles?<CR>
+"Git commits (requires fugitive.vim)
+nnoremap <Leader>G :<C-u>:Commits<CR>
 
 "While the built-in :grep command runs synchronously, the Grepper plugin makes it possible to run grep asynchronously
-let g:grepper = {}
-let g:grepper.tools = ['rg', 'git', 'grep']
+"let g:grepper = {}
+"let g:grepper.tools = ['rg', 'git', 'grep']
 
 "In Command-Line mode, when type grep followed by <Space>, it will be expanded to GrepperGrep.
-function! SetupCommandAlias(input, output)
-  exec 'cabbrev <expr> '.a:input
-        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:input.'")'
-        \ .'? ("'.a:output.'") : ("'.a:input.'"))'
-endfunction
-call SetupCommandAlias("grep", "GrepperGrep")
+"function! SetupCommandAlias(input, output)
+"  exec 'cabbrev <expr> '.a:input
+"        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:input.'")'
+"        \ .'? ("'.a:output.'") : ("'.a:input.'"))'
+"endfunction
+"call SetupCommandAlias("grep", "GrepperGrep")
 
 "Open Grepper-prompt for a particular grep-alike tool
-nnoremap <Leader>G :Grepper -tool git<CR>
-nnoremap <Leader>g :Grepper -tool rg<CR>
-"Search for the current word
-nnoremap <Leader>* :Grepper -cword -noprompt<CR>
-"Search for the current selection
-nmap gs <plug>(GrepperOperator)
-xmap gs <plug>(GrepperOperator)
+"nnoremap <Leader>G :Grepper -tool git<CR>
+"nnoremap <Leader>g :Grepper -tool rg<CR>
+""Search for the current word
+"nnoremap <Leader>* :Grepper -cword -noprompt<CR>
+""Search for the current selection
+"nmap gs <plug>(GrepperOperator)
+"xmap gs <plug>(GrepperOperator)
 
 "let g:codequery_find_text_cmd = 'GrepperGrep'

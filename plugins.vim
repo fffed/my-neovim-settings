@@ -51,7 +51,7 @@ function! PackagerInit() abort
   "provides fuzzy matchers for a variety of sources, including the buffer list, command history, search history, helptags, and many more.
   call packager#add('junegunn/fzf.vim')
   "While the built-in :grep command runs synchronously, the Grepper plugin makes it possible to run grep asynchronously
-  call packager#add('mhinz/vim-grepper')
+  "call packager#add('mhinz/vim-grepper')
   
   "search source code by codequery(replace of ctaqs and cscope)
   "call packager#add('Shougo/unite.vim')
