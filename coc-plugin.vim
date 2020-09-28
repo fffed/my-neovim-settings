@@ -1,5 +1,15 @@
 "COC extensions
-let g:coc_global_extensions = ['coc-tsserver', 'coc-styled-components', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-eslint', 'coc-stylelintplus', 'coc-spell-checker']
+let g:coc_global_extensions = [
+            \'coc-tsserver',
+            \'coc-styled-components',
+            \'coc-css',
+            \'coc-html',
+            \'coc-json',
+            \'coc-yank',
+            \'coc-eslint',
+            \'coc-stylelintplus',
+            \'coc-spell-checker',
+            \'coc-explorer']
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -68,7 +78,7 @@ function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   else
-    call CocAction('doHover')
+    call CocActionAsync('doHover')
   endif
 endfunction
 
@@ -154,3 +164,7 @@ nnoremap <silent><nowait> <Leader>cp  :<C-u>CocListResume<CR>
 "-----------------------------
 "Setup keymap to open yank list
 nnoremap <silent> <Leader>y :<C-U>CocList -A --normal yank<CR>
+
+"-----------------------------
+"Setup Explorer
+nnoremap <F2> :CocCommand explorer<CR>

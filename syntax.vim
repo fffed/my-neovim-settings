@@ -1,17 +1,21 @@
 function! MyHighlights() abort
-   highlight! link cssPositioningProp GruvboxAqua
-   highlight! link cssMediaProp GruvboxAqua
-   highlight! link cssBorderProp GruvboxAqua
+"   highlight! link cssPositioningProp GruvboxAqua
+"   highlight! link cssMediaProp GruvboxAqua
+"   highlight! link cssBorderProp GruvboxAqua
    highlight! link javascriptReserved GruvboxRed
    highlight! link javascriptDebugger GruvboxRedBold
    highlight! link typescriptDebugger GruvboxRedBold
-   highlight! link styledNestedRegion GruvboxAqua
+   highlight! link typescriptDebugger GruvboxRedBold
+"   highlight! link styledNestedRegion GruvboxAqua
 endfunction
 
 augroup MyColors
     autocmd!
     autocmd ColorScheme * call MyHighlights()
+    autocmd FileType coc-explorer :highlight! link Directory GruvboxBlueBold
 augroup END
+
+
 
 "Showing highlight groups
 nmap <leader>sp :call <SID>SynStack()<CR>

@@ -1,5 +1,5 @@
 {
-    "diagnostic.virtualText": true,
+    "diagnostic.virtualText": false,
     "coc.preferences.formatOnSaveFiletypes": [
         "css",
         "markdown",
@@ -14,5 +14,11 @@
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "eslint.autoFixOnSave": true,
-    "stylelintplus.cssInJs": true
+    "stylelintplus.cssInJs": true,
+    "yank.list.maxsize": 100,
+    "yank.highlight.duration": 300,
+    "explorer.openAction.for.directory": "lcd",
+    "explorer.width": 30,
+    "explorer.previewAction.onHover": false,
+    "explorer.icon.enableNerdfont": true
 }
