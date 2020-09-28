@@ -18,11 +18,14 @@ nnoremap Y y$
 "close current buffer without closing its window: Close Location windows, if exist, switch to the previous view buffer, and then close the last switched buffer.
 nnoremap <silent> <leader>q :lclose<bar>bprevious<bar>bdelete #<CR>
 
+"open previous buffer in vertical split
+nnoremap <C-p> :vs #<CR>
+
 "Toggle vim's spell checking
 nnoremap <silent> <Leader>s :<C-u>set spell!<CR>
 
 "Turn off highliting on ESC press
-map <esc> :noh<cr>
+map <ESC> :noh<CR>
 
 "ESC in insert mode
 inoremap kj <esc>
