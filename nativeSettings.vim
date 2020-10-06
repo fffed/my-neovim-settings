@@ -66,7 +66,16 @@ set undofile
 
 "enable spell only if file type is normal text
 let spellable = ['markdown', 'gitcommit', 'txt', 'text']
-autocmd BufEnter * if index(spellable, &ft) < 0 | set nospell | else | set spell | endif
+augroup setSpellCheck
+  autocmd!
+  autocmd BufEnter * if index(spellable, &ft) < 0 | set nospell | else | set spell | endif
+augroup END
 
 "open help in vertical split
-autocmd FileType help wincmd L
+augroup verticalHelp
+  autocmd!
+  autocmd FileType help wincmd L
+augroup END
+
+source $HOME/.config/nvim/statusLine.vim
+

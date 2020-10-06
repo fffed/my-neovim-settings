@@ -16,7 +16,10 @@ augroup END
 
 "Auto save files when focus is lost
 "The command will complain if you have untitled buffers open.
-:au FocusLost * :wa
+augroup autoSave
+  autocmd!
+  autocmd FocusLost * wall
+augroup END
 
 augroup autoSourceVim
   autocmd!
@@ -49,6 +52,7 @@ execute '0r $HOME/.config/nvim/templates/skeleton.' . a:extention .''
 endfunction
 
 augroup templates
+    autocmd!
     autocmd BufNewFile *.jsx call InsertSkeleton('jsx')
     autocmd BufNewFile *.tsx call InsertSkeleton('tsx')
 augroup END
