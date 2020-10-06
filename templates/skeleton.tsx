@@ -10,7 +10,7 @@ type ComponentProps = {
     children: React.ReactNode;
 };
 
-export default function Component({ children }: ComponentProps): JSX.Element {
+export function Component({ children }: ComponentProps): JSX.Element {
     return (
         <ComponentStyled>
             { children }
