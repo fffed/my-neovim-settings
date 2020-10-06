@@ -58,13 +58,20 @@ function! PackagerInit() abort
   "call packager#add('devjoe/vim-codequery')
   
   
-  "Status line
-  call packager#add('itchyny/lightline.vim')
-  
   "Themes
-  call packager#add('gruvbox-community/gruvbox')
+  call packager#add('gruvbox-community/gruvbox', { 'type': 'opt' })
   call packager#add('lifepillar/vim-solarized8', { 'type': 'opt' })
-  "call packager#add('mhartington/oceanic-next', { 'type': 'opt' }) "no JSX
+  call packager#add('fenetikm/falcon', {'type': 'opt' })
+  call packager#add('Lokaltog/vim-monotone', {'type': 'opt' })
+  call packager#add('camgunz/amber', {'type': 'opt' })
+  call packager#add('cocopon/iceberg.vim', {'type': 'opt' })
+  call packager#add('arcticicestudio/nord-vim', {'type': 'opt' })
+  call packager#add('fxn/vim-monochrome', {'type': 'opt' })
+  call packager#add('lifepillar/vim-gruvbox8', {'type': 'opt' })
+  call packager#add('larsbs/vimterial_dark', {'type': 'opt' })
+  call packager#add('mhartington/oceanic-next', { 'type': 'opt' })
+  "call packager#add('taniarascia/new-moon.vim', {'type': 'opt' })
+  "call packager#add('ayu-theme/ayu-vim', {'type': 'opt' })
   "call packager#add('ghifarit53/tokyonight-vim', {'type': 'opt' })
   "call packager#add('sainnhe/gruvbox-material')
   "call packager#add('kaicataldo/material.vim')

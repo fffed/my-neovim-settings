@@ -5,7 +5,6 @@ function! MyHighlights() abort
    highlight! link javascriptReserved GruvboxRed
    highlight! link javascriptDebugger GruvboxRedBold
    highlight! link typescriptDebugger GruvboxRedBold
-   highlight! link typescriptDebugger GruvboxRedBold
 "   highlight! link styledNestedRegion GruvboxAqua
 endfunction
 

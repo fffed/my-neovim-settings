@@ -3,6 +3,10 @@ set termguicolors
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
+"
+" let g:falcon_lightline = 1
+" let g:lightline.colorscheme = 'falcon'
+"colorscheme falcon
 "set background=light
 "colorscheme solarized8
 
@@ -17,6 +21,4 @@ if has('nvim')
 endif
 
 let g:undotree_WindowLayout=2
-
-source $HOME/.config/nvim/statusLine.vim
 
