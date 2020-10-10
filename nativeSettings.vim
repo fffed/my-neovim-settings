@@ -71,10 +71,10 @@ augroup setSpellCheck
   autocmd BufEnter * if index(spellable, &ft) < 0 | set nospell | else | set spell | endif
 augroup END
 
-"open help in vertical split
+"open help and fugitive in vertical split
 augroup verticalHelp
   autocmd!
-  autocmd FileType help wincmd L
+  autocmd FileType help,fugitive wincmd L
 augroup END
 
 source $HOME/.config/nvim/statusLine.vim
