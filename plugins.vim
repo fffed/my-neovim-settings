@@ -70,6 +70,10 @@ function! PackagerInit() abort
   call packager#add('lifepillar/vim-gruvbox8', {'type': 'opt' })
   call packager#add('larsbs/vimterial_dark', {'type': 'opt' })
   call packager#add('mhartington/oceanic-next', { 'type': 'opt' })
+  call packager#add('flrnd/plastic.vim', { 'type': 'opt' })
+  "call packager#add('patstockwell/vim-monokai-tasty', { 'type': 'opt' })
+  "call packager#add('crusoexia/vim-monokai', { 'type': 'opt' })
+  "call packager#add('sainnhe/sonokai', { 'type': 'opt' })
   "call packager#add('taniarascia/new-moon.vim', {'type': 'opt' })
   "call packager#add('ayu-theme/ayu-vim', {'type': 'opt' })
   "call packager#add('ghifarit53/tokyonight-vim', {'type': 'opt' })
@@ -92,7 +96,7 @@ function! PackagerInit() abort
   
   "-----SYNTAX
   "call packager#add('yuezk/vim-js', { 'type': 'opt' })
-  "call packager#add('othree/yajs.vim', { 'type': 'opt' })
+  call packager#add('othree/yajs.vim', { 'type': 'opt' })
   call packager#add('maxmellon/vim-jsx-pretty', { 'type': 'opt' })
   "let g:vim_jsx_pretty_template_tags = []
   "let g:vim_jsx_pretty_disable_tsx = 1
@@ -126,9 +130,9 @@ command! PackagerStatus call PackagerInit() | call packager#status()
 "More info in :help pack-add
 augroup packager_filetype
   autocmd!
-  autocmd BufNewFile,BufRead *.js set filetype=typescript
-  autocmd BufNewFile,BufRead *.jsx set filetype=typescriptreact
-  " autocmd FileType javascript,javascriptreact packadd yajs.vim
+  " autocmd BufNewFile,BufRead *.js set filetype=typescript
+  " autocmd BufNewFile,BufRead *.jsx set filetype=typescriptreact
+  autocmd FileType javascript,javascriptreact packadd yajs.vim
   autocmd FileType javascriptreact,typescriptreact packadd vim-jsx-pretty
   autocmd FileType typescriptreact packadd yats.vim
   autocmd FileType json packadd vim-package-info
