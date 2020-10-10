@@ -29,12 +29,12 @@ augroup END
 
 
 "add any cscope database in current directory
-if filereadable("cscope.out")
-    cs add cscope.out  
-" else add the database pointed to by environment variable 
-elseif $CSCOPE_DB != ""
-    cs add $CSCOPE_DB
-endif
+"if filereadable("cscope.out")
+"    cs add cscope.out  
+"" else add the database pointed to by environment variable 
+"elseif $CSCOPE_DB != ""
+"    cs add $CSCOPE_DB
+"endif
 
 
 function! InsertSkeleton(extention) abort
@@ -56,3 +56,16 @@ augroup templates
     autocmd BufNewFile *.jsx call InsertSkeleton('jsx')
     autocmd BufNewFile *.tsx call InsertSkeleton('tsx')
 augroup END
+
+"rename current file with saving undo history via 'saveas'
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        exec ':silent bw ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>n :call RenameFile()<cr>
