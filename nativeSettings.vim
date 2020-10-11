@@ -40,8 +40,17 @@ set spelllang=en_us,ru_yo
   "autocmd InsertLeave * :setlocal relativenumber
 "augroup END
 
+"The `path` is where Vim searches for files when executing the various search commands.
+"By default `path=.,/usr/include,,.`
+"Directories that should be searched are separated by commas
+"The first . indicates that Vim should include files relative to the current file’s directory.
+"`/usr/include/` typically contains headers so it can be useful if you are doing C and C++ programming.
+"The final sequence of `,,` instructs Vim to search in the current working directory.
+"by default ** only searches 30 directories deep, see :h starstar for more details. 
+set path=.,,,**
+
 "ignore files matching these patterns when opening files based on a glob pattern 
-set wildignore+=*/node_modules/**/*
+set wildignore+=*/dist*/*,*/**.min.*/,*/node_modules/**/*
 
 "--<TAB>--
 "number of spaces within Tab, default=8
@@ -75,6 +84,13 @@ augroup END
 augroup verticalHelp
   autocmd!
   autocmd FileType help,fugitive wincmd L
+augroup END
+
+"to allow to jump to files with endings .js,ts and .jsx,tsx by `gf`
+augroup addSuffix
+  autocmd!
+  autocmd BufNewFile,BufRead *.js,*.jsx suffixesadd+=.js,.jsx
+  autocmd BufNewFile,BufRead *.ts,*.tsx suffixesadd+=.ts,.tsx
 augroup END
 
 source $HOME/.config/nvim/statusLine.vim
