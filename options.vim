@@ -18,6 +18,10 @@ set cursorline
 set scrolloff=5
 "set languages for spell checking
 set spelllang=en_us,ru_yo
+"Override the 'ignorecase' option if the search pattern contains upper case characters. 
+set smartcase
+"to visualise tabs, spaces, and line endings
+set list listchars=tab:▸·,trail:·
 
 "ignore files matching these patterns when opening files based on a glob pattern 
 set wildignore+=*/dist*/*,*/**.min.*/,*/node_modules/**/*
@@ -55,6 +59,11 @@ set shiftround
 "wrap lines at convenient points, avoid wrapping a line in the middle of a word(only for when wrap is enabled)
 "set linebreak
 
+"set cursor color in insert-mode and normal-mode(works with kitty term)
+set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor/lCursor,r-cr:hor20,o:hor50
+"set cursor's different colors in insert-mode and normal-mode(works with kitty term)
+"set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor/lCursor,r-cr:hor20,o:hor50
+
 "to allow to jump to files with endings .js,ts and .jsx,tsx by `gf`
 augroup changeLineBreak
   autocmd!
@@ -69,6 +78,21 @@ augroup END
 
 "shows the absolute number for the current line, and relative numbers for other lines
 "set relativenumber
+
+"turn off a message about current mode on the last line (actual for status line plugins
+set noshowmode
+
+"Next is recommended by nvim-lua/completion-nvim
+" Use <Tab> and <S-Tab> to navigate through popup menu
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Set completeopt to have a better completion experience
+" set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+" set shortmess+=c
+
+"launch thesaurus from vi using ctrl-x ctrl-t
+set thesaurus+=$HOME/.config/nvim/dict/mthesaur.txt
 
 "enable relative numbers only in Normal mode, and absolute numbers only in Insert mode
 "augroup toggle_relative_number
@@ -92,9 +116,15 @@ augroup END
 "to allow to jump to files with endings .js,ts and .jsx,tsx by `gf`
 augroup addSuffix
   autocmd!
-  autocmd BufNewFile,BufRead *.js,*.jsx suffixesadd+=.js,.jsx
-  autocmd BufNewFile,BufRead *.ts,*.tsx suffixesadd+=.ts,.tsx
+  autocmd BufNewFile,BufRead *.js,*.jsx set suffixesadd+=.js,.jsx
+  autocmd BufNewFile,BufRead *.ts,*.tsx set suffixesadd+=.ts,.tsx
 augroup END
 
-source $HOME/.config/nvim/statusLine.vim
+""to compile plugins.lua whenever the file is saved
+augroup compilePacker
+  autocmd!
+  autocmd BufWritePost plugins.lua PackerCompile
+augroup END
+
+"source $HOME/.config/nvim/statusLine.vim
 

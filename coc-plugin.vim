@@ -9,6 +9,7 @@ let g:coc_global_extensions = [
             \'coc-eslint',
             \'coc-stylelintplus',
             \'coc-spell-checker',
+            \'coc-react-refactor',
             \'coc-explorer']
 
 " Give more space for displaying messages.
@@ -170,4 +171,9 @@ nnoremap <silent> <Leader>y :<C-U>CocList -A --normal yank<CR>
 
 "-----------------------------
 "Setup Explorer
-nnoremap <F2> :CocCommand explorer<CR>
+nnoremap <F3> :CocCommand explorer<CR>
+
+"To make Vim treat all json files as jsonc - JSON with comments:
+augroup JsonToJsonc
+    autocmd! FileType json set filetype=jsonc
+augroup END

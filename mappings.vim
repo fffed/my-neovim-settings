@@ -36,6 +36,8 @@ cnoremap kj <C-C>
 "Delete selected text to BlackHole register
 vnoremap X "_d
 
+vnoremap <Leader>p "_dp
+
 "Insert current path relative to `cwd`
 cnoremap <C-h> <C-R>=expand('%:h').'/'<CR>
 
@@ -72,10 +74,25 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 "Undo plugin mappings
-nnoremap <F4> :<C-u>UndotreeToggle<CR>
+"nnoremap <F4> :<C-u>UndotreeToggle<CR>
+nnoremap <F4> :<C-u>MundoToggle<CR>
+"
+"Glow markdown previewer, update before call
+nmap <leader>p :<C-u>up \| Glow<CR>
 
 "using cscope
 nnoremap <F9> :!find . \! -path './node_modules/*' -iname '*.js' -o -iname '*.jsx' -o -iname '*.ts' -o -iname '*.tsx' > cscope.files<CR>
   \:!cscope -b -i cscope.files -f cscope.out<CR>
   \:cs reset<CR>
+
+
+"Autoclose: set paste should be "nopaste", to brake mappings press before
+"typing the character CTRL-V
+" inoremap " ""<Left>
+" inoremap ' ''<Left>
+" inoremap ( ()<Left>
+" inoremap [ []<Left>
+" inoremap { {}<Left>
+" inoremap {<CR> {<CR>}<ESC>O
+" inoremap (<CR> (<CR>)<ESC>O
 

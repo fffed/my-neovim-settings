@@ -5,18 +5,23 @@
         "markdown",
         "html",
         "javascript",
-        "javascriptreact"
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
     ],
     "cSpell.userWords": [
         "epam",
         "gruvbox"
     ],
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+    "typescript.preferences.importModuleSpecifier": "non-relative",
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+    "javascript.preferences.importModuleSpecifier": "non-relative",
     "eslint.autoFixOnSave": true,
     "stylelintplus.cssInJs": true,
     "yank.list.maxsize": 100,
     "yank.highlight.duration": 300,
+    "yank.highlight.enable": false,
     "explorer.openAction.for.directory": "lcd",
     "explorer.width": 30,
     "explorer.previewAction.onHover": false,

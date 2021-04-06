@@ -11,7 +11,7 @@ endfunction
 " The last-used search term is automatically restored after leaving a function, so we don't have to do anything else for this.
 augroup trimSpaces
   autocmd!
-  autocmd BufWritePre  *.{js,jsx,ts,tsx,json}  call TrimWhitespace()
+  " autocmd BufWritePre  *.{js,jsx,ts,tsx,json}  call TrimWhitespace()
 augroup END
 
 "Auto save files when focus is lost
@@ -39,15 +39,15 @@ augroup END
 
 function! InsertSkeleton(extention) abort
   let filename = expand('%')
-  let componetName = expand('%:t:r')
+  let componentName = expand('%:t:r')
 
   " abort on non-empty buffer or exitant file
   if !(line('$') == 1 && getline('$') == '') || filereadable(filename)
     return
   endif
 
-execute '0r $HOME/.config/nvim/templates/skeleton.' . a:extention .''
-            \ .'| %s/Component/' . componetName . '/g'
+  execute '0r $HOME/.config/nvim/templates/skeleton.' . a:extention .''
+            \ .'| %s/Component/' . componentName . '/g'
             \ .'| /function '
 endfunction
 
@@ -68,4 +68,9 @@ function! RenameFile()
         redraw!
     endif
 endfunction
-map <leader>n :call RenameFile()<cr>
+nmap <Leader>n :call RenameFile()<cr>
+
+augroup highlightYank
+  au!
+  au TextYankPost * silent! lua vim.highlight.on_yank({ timeout = 200 })
+augroup END

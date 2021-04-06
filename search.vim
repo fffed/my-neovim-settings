@@ -2,9 +2,9 @@
 let g:gutentags_add_default_project_roots=0
 let g:gutentags_project_root=['package.json', '.git']
 let g:gutentags_cache_dir = expand('~/.cache/nvim/ctags/')
-"To clear cache
+""To clear cache
 command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
-"Make Gutentags generate in most cases
+""Make Gutentags generate in most cases
 let g:gutentags_generate_on_new = 1
 let g:gutentags_generate_on_missing = 1
 let g:gutentags_generate_on_write = 1
@@ -37,57 +37,57 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 " Customize fzf colors to match your color scheme if it has not build in support
-"let g:fzf_colors =
-"\ { 'fg':      ['fg', 'Normal'],
-"  \ 'bg':      ['bg', 'Normal'],
-"  \ 'hl':      ['fg', 'Comment'],
-"  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-"  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-"  \ 'hl+':     ['fg', 'Statement'],
-"  \ 'info':    ['fg', 'PreProc'],
-"  \ 'border':  ['fg', 'Ignore'],
-"  \ 'prompt':  ['fg', 'Conditional'],
-"  \ 'pointer': ['fg', 'Exception'],
-"  \ 'marker':  ['fg', 'Keyword'],
-"  \ 'spinner': ['fg', 'Label'],
-"  \ 'header':  ['fg', 'Comment'] }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'WarningMsg'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Number'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 
 "floating fzf window with borders
-let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
-
-function! CreateCenteredFloatingWindow()
-    let width = min([&columns - 4, max([80, &columns - 20])])
-    let height = min([&lines - 4, max([20, &lines - 10])])
-    let top = ((&lines - height) / 2) - 1
-    let left = (&columns - width) / 2
-    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
-
-    let top = "╭" . repeat("─", width - 2) . "╮"
-    let mid = "│" . repeat(" ", width - 2) . "│"
-    let bot = "╰" . repeat("─", width - 2) . "╯"
-    let lines = [top] + repeat([mid], height - 2) + [bot]
-    let s:buf = nvim_create_buf(v:false, v:true)
-    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-    call nvim_open_win(s:buf, v:true, opts)
-    set winhl=Normal:Floating
-    let opts.row += 1
-    let opts.height -= 2
-    let opts.col += 2
-    let opts.width -= 4
-    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-    au BufWipeout <buffer> exe 'bw '.s:buf
-endfunction
+"let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
+"
+"function! CreateCenteredFloatingWindow()
+"    let width = min([&columns - 4, max([80, &columns - 20])])
+"    let height = min([&lines - 4, max([20, &lines - 10])])
+"    let top = ((&lines - height) / 2) - 1
+"    let left = (&columns - width) / 2
+"    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+"
+"    let top = "╭" . repeat("─", width - 2) . "╮"
+"    let mid = "│" . repeat(" ", width - 2) . "│"
+"    let bot = "╰" . repeat("─", width - 2) . "╯"
+"    let lines = [top] + repeat([mid], height - 2) + [bot]
+"    let s:buf = nvim_create_buf(v:false, v:true)
+"    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+"    call nvim_open_win(s:buf, v:true, opts)
+"    set winhl=Normal:Floating
+"    let opts.row += 1
+"    let opts.height -= 2
+"    let opts.col += 2
+"    let opts.width -= 4
+"    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+"    au BufWipeout <buffer> exe 'bw '.s:buf
+"endfunction
 
 "opens the fzf picker interface for Search
-nnoremap <Leader>f :<C-u>Files<CR>
-nnoremap <Leader>b :<C-u>Buffers<CR>
-nnoremap <Leader>/ :<C-u>RG<CR>
-nnoremap <Leader>? :<C-u>History<CR>
-"Git files (git status)
-nnoremap <Leader>g :<C-u>:GFiles?<CR>
-"Git commits (requires fugitive.vim)
-nnoremap <Leader>G :<C-u>:Commits<CR>
+"nnoremap <Leader>f :<C-u>Files<CR>
+"nnoremap <Leader>b :<C-u>Buffers<CR>
+"nnoremap <Leader>/ :<C-u>RG<CR>
+"nnoremap <Leader>? :<C-u>History<CR>
+""Git files (git status)
+"nnoremap <Leader>g :<C-u>:GFiles?<CR>
+""Git commits (requires fugitive.vim)
+"nnoremap <Leader>G :<C-u>:Commits<CR>
 
 "While the built-in :grep command runs synchronously, the Grepper plugin makes it possible to run grep asynchronously
 "let g:grepper = {}
@@ -111,3 +111,55 @@ nnoremap <Leader>G :<C-u>:Commits<CR>
 "xmap gs <plug>(GrepperOperator)
 
 "let g:codequery_find_text_cmd = 'GrepperGrep'
+
+
+
+"----------TELESCOPE
+lua << EOF
+-- This will load fzy_native and have it override the default file sorter
+require('telescope').load_extension('fzy_native')
+require('telescope').setup{
+    defaults = {
+        prompt_position = "top",
+        sorting_strategy = "ascending",
+        set_env = { ['COLORTERM'] = 'truecolor' },
+    },
+    extensions = {
+        fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true,
+        }
+    }
+}
+EOF
+
+function! RipgrepByType(type)
+    execute "lua require('telescope.builtin').live_grep({ vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '--type=".a:type."' }})"
+endfunction
+
+command! -nargs=* RipgrepByType call RipgrepByType( <f-args> )
+
+" some of available parameters
+"   prompt_title = "~ dotfiles ~",
+"   shorten_path = false,
+"   cwd = "~/.config/nvim",
+
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({ find_command = {'fd', '--hidden', '--type', 'f'} })<cr>
+nnoremap <leader>fu <cmd>lua require('telescope.builtin').find_files({ find_command = {'fd', '--hidden', '--type', 'f'}, cwd = vim.fn.expand('%:p:h') })<cr>
+"to ignore file name while live_greping
+":lua require'telescope.builtin'.live_grep{only_sort_text = true}
+nnoremap <leader>f/ <cmd>lua require('telescope.builtin').live_grep()<cr>
+" nnoremap <leader>fs <cmd>lua require('telescope.builtin').grep_string()<cr>
+"find exact match of a word under the cursor
+nnoremap <leader>fw <cmd>lua require('telescope.builtin').grep_string({ word_match = '-w' })<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fc <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>fo <cmd>lua require('telescope.builtin').oldfiles()<cr>
+nnoremap <leader>fr <cmd>lua require('telescope.builtin').lsp_references()<cr>
+nnoremap <leader>fgf <cmd>lua require('telescope.builtin').git_files()<cr>
+nnoremap <leader>fgs <cmd>lua require('telescope.builtin').git_status()<cr>
+nnoremap <leader>fgc <cmd>lua require('telescope.builtin').git_commits()<cr>
+nnoremap <leader>fgb <cmd>lua require('telescope.builtin').git_branches()<cr>
+"file explorer
+nnoremap <leader>fe <cmd>lua require('telescope.builtin').file_browser()<cr>

@@ -1,8 +1,16 @@
 set termguicolors
+" set background=light
 
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
+" let g:gruvbox_italic=1
+" let g:gruvbox_contrast_dark='hard'
+" let g:monotone_color = [10, 5, 60]
+" let g:monotone_contrast_factor = -0.8
+" ./colors/my-paper.vim
+colorscheme my-monotone
+
+" colorscheme mono
+" packadd! colorbuddy.vim
+" lua require('colorbuddy').colorscheme('mono')
 "
 " let g:falcon_lightline = 1
 " let g:lightline.colorscheme = 'falcon'

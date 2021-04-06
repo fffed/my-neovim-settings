@@ -121,7 +121,7 @@ endfunction
 
 "This will create an autocmd for FileType * to highlight every filetype for nvim-colorizer.lua
 packadd nvim-colorizer.lua
-"lua require 'colorizer'.setup()
+lua require 'colorizer'.setup()
 
 "Add custom comands
 command! PackagerInstall call PackagerInit() | call packager#install()
