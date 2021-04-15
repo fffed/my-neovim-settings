@@ -37,11 +37,11 @@ return require('packer').startup(function()
       -- cmd = {'Conflicted', 'GitNextConflict'}
   }
 
-  use {
-      'junegunn/fzf.vim',
-      requires = {'junegunn/fzf', run = './install --all && ln -s $(pwd) ~/.fzf'},
-      cmd = { 'Files', 'Buffers', 'RG', 'History', 'GFiles', 'Commits' }
-  }
+  --use {
+  --    'junegunn/fzf.vim',
+  --    requires = {'junegunn/fzf', run = './install --all && ln -s $(pwd) ~/.fzf'},
+  --    cmd = { 'Files', 'Buffers', 'RG', 'History', 'GFiles', 'Commits' }
+  --}
 
   use {
       'nvim-telescope/telescope.nvim',
