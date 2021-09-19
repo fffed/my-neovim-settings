@@ -4,6 +4,14 @@ return require('packer').startup(function()
   -- Packer can manage itself as an optional plugin
   use {'wbthomason/packer.nvim', opt = true}
 
+  -- use 'antonk52/bad-practices.nvim'
+
+  --to reload entire Neovim config completely
+  -- use {'famiu/nvim-reload',
+  --   cmd = { 'Reload', 'Restart' },
+  --   requires = { 'nvim-lua/plenary.nvim' }
+  -- }
+
   --visualizes undo history and makes it easier to browse and switch between different undo branches
   use {'simnalamburt/vim-mundo', cmd = {'MundoToggle'}}
   -- use {'mbbill/undotree', cmd = {'UndotreeToggle'}}
@@ -23,7 +31,18 @@ return require('packer').startup(function()
   -- use 'airblade/vim-gitgutter'
   use {
     'lewis6991/gitsigns.nvim',
-    requires = { 'nvim-lua/plenary.nvim' }
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+        require('gitsigns').setup{
+            signs = {
+                add          = {hl = 'DiffAdd'   , text = '+', numhl='GitSignsAddNr'},
+                change       = {hl = 'DiffChange', text = '│', numhl='GitSignsChangeNr'},
+                delete       = {hl = 'DiffDelete', text = '_', numhl='GitSignsDeleteNr'},
+                topdelete    = {hl = 'DiffDelete', text = '‾', numhl='GitSignsDeleteNr'},
+                changedelete = {hl = 'DiffChange', text = '~', numhl='GitSignsChangeNr'},
+            }
+        }
+    end
   }
 
   use {
@@ -43,21 +62,35 @@ return require('packer').startup(function()
   --    cmd = { 'Files', 'Buffers', 'RG', 'History', 'GFiles', 'Commits' }
   --}
 
+  use 'sindrets/diffview.nvim'
+
   use {
       'nvim-telescope/telescope.nvim',
       requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, { 'nvim-telescope/telescope-fzy-native.nvim' }}
   }
 
+  --telescope plugin for clipboard history
+  use {
+    "AckslD/nvim-neoclip.lua",
+    config = function()
+        require('neoclip').setup()
+    end,
+  }
+
   use{
       'kyazdani42/nvim-tree.lua',
        requires = {'kyazdani42/nvim-web-devicons'},
-       cmd = {'NvimTreeToggle', 'NvimTreeOpen'},
+       -- cmd = {'NvimTreeToggle', 'NvimTreeOpen'},
    }
 
   use {'neoclide/coc.nvim', branch = 'release'}
 
   --view the latest version of the packages you depend on 
-  use {'meain/vim-package-info', ft = { 'json', 'jsonc' }, run = { 'npm install', ':UpdateRemotePlugins'}}
+  use {
+      'vuki656/package-info.nvim' ,
+      ft = { 'json', 'jsonc'},
+      config = function() require('package-info').setup() end
+    }
 
   --colors preview
   use {
@@ -69,18 +102,18 @@ return require('packer').startup(function()
   use {
       'windwp/nvim-ts-autotag',
        -- requires = {'nvim-treesitter/nvim-treesitter'}
-      -- ft = { 'html', 'javascriptreact', 'typescriptreact' },
+      ft = { 'html', 'javascriptreact', 'typescriptreact' },
       -- config = function() require('nvim-ts-autotag').setup() end
   }
 
   use {
       'JoosepAlviste/nvim-ts-context-commentstring',
        -- requires = {'nvim-treesitter/nvim-treesitter'}
-      -- ft = { 'javascriptreact', 'typescriptreact' },
+      ft = { 'javascriptreact', 'typescriptreact' },
       -- config = function() require('nvim-ts-context-commentstring').setup() end
   }
 
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', branch = '0.5-compat', run = ':TSUpdate' }
 
   use {
       'nvim-treesitter/playground',
@@ -99,7 +132,7 @@ return require('packer').startup(function()
   --     -- config = "vim.cmd [[lua require'nvim_lsp'.tsserver.setup{ on_attach=require'completion'.on_attach }]]"
   --     }
 
-  use 'alpertuna/vim-header'
+  -- use 'alpertuna/vim-header'
   use 'antoyo/vim-licenses'
 
   --md preview (depends on glow)
@@ -113,9 +146,11 @@ return require('packer').startup(function()
 
   --COLOR SCHEMES--
   --LUA
-  use {'npxbr/gruvbox.nvim', requires = {'rktjmp/lush.nvim'}}
+  -- use {'npxbr/gruvbox.nvim', requires = {'rktjmp/lush.nvim'}}
   use {'kyazdani42/blue-moon'}
-  use {'tanvirtin/nvim-monokai'}
+  -- use {'tanvirtin/nvim-monokai'}
+  -- use {'ful1e5/onedark.nvim'}
+  use {'projekt0n/github-nvim-theme'}
 
   -- use {'gruvbox-community/gruvbox', opt = true}
   use {'wbthomason/vim-nazgul', opt = true}
@@ -123,13 +158,15 @@ return require('packer').startup(function()
   use {'fenetikm/falcon', opt = true}
   use {'Lokaltog/vim-monotone', opt = true}
   use {'cocopon/iceberg.vim', opt = true}
-  use {'reewr/vim-monokai-phoenix', opt = true}
   use {'NieTiger/halcyon-neovim', opt = true}
-  use {'rakr/vim-one', opt = true}
   use {'YorickPeterse/vim-paper', opt = true}
   use {'sjl/badwolf', opt = true}
+  use {'mcchrish/zenbones.nvim', opt = true}
+  use {'pradyungn/Mountain', rtp = 'vim', opt = true}
+  use {'habamax/vim-bronzage', opt = true}
+  -- use {'reewr/vim-monokai-phoenix', opt = true}
   -- use {'mhartington/oceanic-next', opt = true}
-  use {'sainnhe/gruvbox-material', opt = true}
+  -- use {'sainnhe/gruvbox-material', opt = true}
   -- use {'sainnhe/forest-night', opt = true}
   -- use {'sainnhe/sonokai', opt = true}
   -- use {'sainnhe/edge', opt = true}

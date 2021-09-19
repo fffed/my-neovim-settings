@@ -23,23 +23,14 @@ set smartcase
 "to visualise tabs, spaces, and line endings
 set list listchars=tab:▸·,trail:·
 
-"ignore files matching these patterns when opening files based on a glob pattern 
-set wildignore+=*/dist*/*,*/**.min.*/,*/node_modules/**/*
-
 "To ALWAYS use the clipboard for ALL operations (instead of interacting with the '+' and/or '*' registers explicitly)
 set clipboard+=unnamedplus
 
 "Maintain undo history between sessions
 set undofile
 
-"The `path` is where Vim searches for files when executing the various search commands.
-"By default `path=.,/usr/include,,.`
-"Directories that should be searched are separated by commas
-"The first . indicates that Vim should include files relative to the current file’s directory.
-"`/usr/include/` typically contains headers so it can be useful if you are doing C and C++ programming.
-"The final sequence of `,,` instructs Vim to search in the current working directory.
-"by default ** only searches 30 directories deep, see :h starstar for more details. 
-set path=.,,,**
+"enable mouse
+set mouse+=a
 
 "--<TAB>--
 "number of spaces within Tab, default=8
@@ -56,13 +47,31 @@ set smartindent
 set shiftround
 "--</TAB>--
 
+"turn off a message about current mode on the last line (actual for status line plugins
+set noshowmode
+
 "wrap lines at convenient points, avoid wrapping a line in the middle of a word(only for when wrap is enabled)
 "set linebreak
+
+"set completion mode to complete longest common string, then each full match
+set wildmode=longest,full
 
 "set cursor color in insert-mode and normal-mode(works with kitty term)
 set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor/lCursor,r-cr:hor20,o:hor50
 "set cursor's different colors in insert-mode and normal-mode(works with kitty term)
 "set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor/lCursor,r-cr:hor20,o:hor50
+
+"ignore files matching these patterns when opening files based on a glob pattern 
+set wildignore+=*/dist*/*,*/**.min.*/,*/node_modules/**/*
+
+"The `path` is where Vim searches for files when executing the various search commands.
+"By default `path=.,/usr/include,,.`
+"Directories that should be searched are separated by commas
+"The first . indicates that Vim should include files relative to the current file’s directory.
+"`/usr/include/` typically contains headers so it can be useful if you are doing C and C++ programming.
+"The final sequence of `,,` instructs Vim to search in the current working directory.
+"by default ** only searches 30 directories deep, see :h starstar for more details. 
+set path=.,,,**
 
 "to allow to jump to files with endings .js,ts and .jsx,tsx by `gf`
 augroup changeLineBreak
@@ -78,9 +87,6 @@ augroup END
 
 "shows the absolute number for the current line, and relative numbers for other lines
 "set relativenumber
-
-"turn off a message about current mode on the last line (actual for status line plugins
-set noshowmode
 
 "Next is recommended by nvim-lua/completion-nvim
 " Use <Tab> and <S-Tab> to navigate through popup menu
@@ -117,13 +123,24 @@ augroup END
 augroup addSuffix
   autocmd!
   autocmd BufNewFile,BufRead *.js,*.jsx set suffixesadd+=.js,.jsx
-  autocmd BufNewFile,BufRead *.ts,*.tsx set suffixesadd+=.ts,.tsx
+  autocmd BufNewFile,BufRead *.ts,*.tsx set suffixesadd+=.ts,.tsx,.d.ts
 augroup END
 
 ""to compile plugins.lua whenever the file is saved
 augroup compilePacker
   autocmd!
   autocmd BufWritePost plugins.lua PackerCompile
+augroup END
+
+augroup ChangeCursorLineOnFocus
+    au!
+    au WinEnter * set cursorline
+    au WinLeave * set nocursorline
+augroup END
+
+"To make Vim treat all json files as jsonc - JSON with comments:
+augroup JsonToJsonc
+    autocmd! FileType json set filetype=jsonc
 augroup END
 
 "source $HOME/.config/nvim/statusLine.vim

@@ -120,9 +120,15 @@ lua << EOF
 require('telescope').load_extension('fzy_native')
 require('telescope').setup{
     defaults = {
-        prompt_position = "top",
         sorting_strategy = "ascending",
         set_env = { ['COLORTERM'] = 'truecolor' },
+        layout_strategy = "flex",
+        layout_config = {
+            prompt_position = "top",
+            vertical = {
+                mirror = true,
+            },
+        },
     },
     extensions = {
         fzy_native = {
@@ -149,17 +155,22 @@ nnoremap <leader>fu <cmd>lua require('telescope.builtin').find_files({ find_comm
 "to ignore file name while live_greping
 ":lua require'telescope.builtin'.live_grep{only_sort_text = true}
 nnoremap <leader>f/ <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>f? <cmd>lua require('telescope.builtin').live_grep({ cwd = vim.fn.expand('%:p:h') })<cr>
 " nnoremap <leader>fs <cmd>lua require('telescope.builtin').grep_string()<cr>
 "find exact match of a word under the cursor
 nnoremap <leader>fw <cmd>lua require('telescope.builtin').grep_string({ word_match = '-w' })<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fo <cmd>lua require('telescope.builtin').oldfiles()<cr>
+nnoremap <leader>fr <cmd>lua require('telescope.builtin').resume()<cr>
 nnoremap <leader>fc <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-nnoremap <leader>fo <cmd>lua require('telescope.builtin').oldfiles()<cr>
-nnoremap <leader>fr <cmd>lua require('telescope.builtin').lsp_references()<cr>
+" nnoremap <leader>fr <cmd>lua require('telescope.builtin').lsp_references()<cr>
+nnoremap <leader>fy <cmd>lua require('telescope.builtin').registers()<cr>
 nnoremap <leader>fgf <cmd>lua require('telescope.builtin').git_files()<cr>
 nnoremap <leader>fgs <cmd>lua require('telescope.builtin').git_status()<cr>
 nnoremap <leader>fgc <cmd>lua require('telescope.builtin').git_commits()<cr>
 nnoremap <leader>fgb <cmd>lua require('telescope.builtin').git_branches()<cr>
 "file explorer
 nnoremap <leader>fe <cmd>lua require('telescope.builtin').file_browser()<cr>
+"pluggin for clipboard
+nnoremap <Leader>y :lua require('telescope').extensions.neoclip.default()<cr>

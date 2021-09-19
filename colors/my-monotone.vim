@@ -3,16 +3,34 @@
 source $HOME/.local/share/nvim/site/pack/packer/opt/vim-monotone/colors/monotone.vim
 "Override the name of the base colorscheme with the name of this custom one
 let g:colors_name = "my-monotone"
+" let g:monotone_emphasize_whitespace = 1 " Emphasize whitespace
+
+" augroup contranst
+    " autocmd!
+    " autocmd WinLeave * Monotone 120 100 70
+    " autocmd WinEnter * Monotone 10 5 60
+    " autocmd FocusLost * :colorscheme goodwolf
+    " autocmd FocusGained * :colorscheme falcon
+" augroup END
+
+"set different background for non-active windows
+hi NormalNC guibg=#222020
 
 hi Whitespace guifg=#723030
+
+hi MatchParen guibg=#787271
 
 
 "gitsigns
 hi diffAdded  guifg=#88aa77  guibg=NONE
 hi DiffRemoved guifg=#aa7766  guibg=NONE
 " nvim-tree
-hi NvimTreeFileDirty guifg=#AC3A3A
+hi NvimTreeFileDirty gui=bold
+hi NvimTreeGitNew gui=bold
+" hi NvimTreeFileDirty guifg=#E79191
+hi NvimTreeGitDirty guifg=#F5AC46
 hi NvimTreeRootFolder guifg=#9C9695
+hi NvimTreeExecFile guifg=#7788aa
 
 " Telescope
 hi TelescopeSelection      gui=bold                 " selected item

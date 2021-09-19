@@ -1,11 +1,14 @@
-"change the default Leader key from \ to SPACE
-let mapleader = " "
+"make "Y" to work from the cursor to the end of line (which is more logical, but not Vi-compatible)
+nnoremap Y y$
+
+"turn off Help
+nnoremap <F1> <Nop>
 
 "turn off default SPACE behavior
 nnoremap <Space> <Nop>
 
-"make "Y" to work from the cursor to the end of line (which is more logical, but not Vi-compatible)
-nnoremap Y y$
+"change the default Leader key from \ to SPACE
+let mapleader = " "
 
 "don't copy single letter deletes
 "nnoremap x "_x   "brake letters swapping
@@ -33,9 +36,18 @@ inoremap kj <esc>
 "Note: In command mode mappings to ESC run the command for some odd historical vi compatibility reason. We use the alternate method of existing which is Ctrl-C
 cnoremap kj <C-C>      
 
+" replace native 'Insert next non-digit literally' with pasting for insert
+" mode
+inoremap <C-v> <C-r>*
+
+"remap ESC key in terminal mode so we can send an Escape key to the terminal by pressing <C-v><Esc> (mnemonic: Verbatim escape).
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-v><Esc> <Esc>
+
 "Delete selected text to BlackHole register
 vnoremap X "_d
 
+"Delete selected text to BlackHole register and paste new text from default register
 vnoremap <Leader>p "_dp
 
 "Insert current path relative to `cwd`
@@ -46,11 +58,11 @@ nnoremap <TAB> :<C-u>bnext<CR>
 "Move to previous buffer
 nnoremap <S-TAB> :<C-u>bprevious<CR>
 
-"remap ESC key in terminal mode so we can send an Escape key to the terminal by pressing <C-v><Esc> (mnemonic: Verbatim escape).
-if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <C-v><Esc> <Esc>
-endif
+"Resize current window
+nnoremap <Up> :resize +2<CR>
+nnoremap <Down> :resize -2<CR>
+nnoremap <Left> :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
 
 "Windows navigation
 nnoremap <Leader>w <C-w>w
@@ -58,12 +70,13 @@ nnoremap <Leader>w <C-w>w
 "nnoremap <Leader>wj <C-w>j
 "nnoremap <Leader>wk <C-w>k
 "nnoremap <Leader>wl <C-w>l
-if has('nvim')
-  tnoremap <Leader>wh <c-\><c-n><c-w>h
-  tnoremap <Leader>wj <c-\><c-n><c-w>j
-  tnoremap <Leader>wk <c-\><c-n><c-w>k
-  tnoremap <Leader>wl <c-\><c-n><c-w>l
-endif
+
+"Windows navigation for terminal
+tnoremap <Leader>wh <c-\><c-n><c-w>h
+tnoremap <Leader>wj <c-\><c-n><c-w>j
+tnoremap <Leader>wk <c-\><c-n><c-w>k
+tnoremap <Leader>wl <c-\><c-n><c-w>l
+
 
 "Moving lines up and down https://vim.fandom.com/wiki/Moving_lines_up_or_down
 nnoremap <A-j> :m .+1<CR>==
