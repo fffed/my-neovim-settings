@@ -37,4 +37,4 @@ let g:languagetool_jar='$HOME/LanguageTool-5.2/languagetool-commandline.jar'
 "This will create an autocmd for FileType * to highlight every filetype for nvim-colorizer.lua
 au! VimEnter * lua require 'colorizer'.setup()
 
-let g:markdown_fenced_languages = ['html', 'javascript', 'jsx', 'vim', 'bash']
+let g:markdown_fenced_languages = ['html', 'javascript', 'js=javascript', 'json=javascript', 'jsx=javascriptreact', 'vim', 'bash', 'sh=bash']

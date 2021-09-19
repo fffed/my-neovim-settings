@@ -27,7 +27,7 @@ Copy from some random place in the file
 :read !sed -n 30,50p some_file.txt
 ```
 
-# SEARCHING/NAVIGATING
+# NAVIGATING
 
 ```
 :b <fuzzy name of file in buffer>
@@ -41,3 +41,14 @@ Search for {pattern} in the files {file} ... and set the error list to the match
 ```
 :vim <search keyword> **/* to the find all references of something
 ```
+
+# SEARCHING
+The next option allows to use `:find {pattern}` to search a file name with TAB-completion in the NVIM .config directory
+```vim
+set path+=~/.config/nvim
+```
+To allow to find in sub directories recursively we should add `**` sing to the path
+```vim
+set path+=~/.config/nvim/**
+```
+
