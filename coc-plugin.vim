@@ -3,14 +3,14 @@ let g:coc_global_extensions = [
             \'coc-tsserver',
             \'coc-styled-components',
             \'coc-css',
+            \'coc-cssmodules',
             \'coc-html',
             \'coc-json',
-            \'coc-yank',
+            \'coc-svg',
             \'coc-eslint',
             \'coc-stylelintplus',
             \'coc-spell-checker',
-            \'coc-react-refactor',
-            \'coc-explorer']
+            \'coc-react-refactor']
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -166,14 +166,5 @@ nnoremap <silent><nowait> <Leader>cp  :<C-u>CocListResume<CR>
 
 
 "-----------------------------
-"Setup keymap to open yank list
-nnoremap <silent> <Leader>y :<C-U>CocList -A --normal yank<CR>
-
-"-----------------------------
-"Setup Explorer
-nnoremap <F3> :CocCommand explorer<CR>
-
-"To make Vim treat all json files as jsonc - JSON with comments:
-augroup JsonToJsonc
-    autocmd! FileType json set filetype=jsonc
-augroup END
+"Setup keymap to open yank list for \'coc-yank',
+" nnoremap <silent> <Leader>y :<C-U>CocList -A --normal yank<CR>

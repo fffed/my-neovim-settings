@@ -70,6 +70,12 @@ function! RenameFile()
 endfunction
 nmap <Leader>n :call RenameFile()<cr>
 
+"equalize Vim splits that have been munged by some type of resize event.
+augroup highlightYank
+  au!
+  au VimResized * wincmd =
+augroup END
+
 augroup highlightYank
   au!
   au TextYankPost * silent! lua vim.highlight.on_yank({ timeout = 200 })
