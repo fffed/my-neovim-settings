@@ -34,11 +34,3 @@ let g:loaded_netrwFileHandlers = 1
 ""Turn off banner
 "let g:netrw_banner=0
 
-"toggle lua-tree explorer
-nnoremap <F2> :<C-u>NvimTreeToggle<CR>
-let g:nvim_tree_git_hl = 1 "enable file highlight for git attributes
-let g:nvim_tree_indent_markers = 1 "shows indent markers when folders are open
-let g:nvim_tree_follow = 1 "allows the cursor to be updated to the correct location in the tree on |BufEnter|.
-let g:nvim_tree_width = 40
-let g:nvim_tree_autoclose = 1 "automatically close the tree if it's the last window
-let g:nvim_tree_disable_netrw = 1 "disable netrw and all related functionalities
