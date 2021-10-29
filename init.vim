@@ -7,7 +7,8 @@ source $HOME/.config/nvim/utils.vim
 " let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 " ./lua/plugins.lua 
 lua require('plugins')
-lua require('configs')
+" ./lua/configs.lua
+lua require('configs') 
 
 " lua require'nvim_lsp'.tsserver.setup{ on_attach=require'completion'.on_attach }
 " lua <<EOF

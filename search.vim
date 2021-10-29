@@ -116,6 +116,7 @@
 
 "----------TELESCOPE
 lua << EOF
+-- require('telescope').load_extension('fzf')
 -- This will load fzy_native and have it override the default file sorter
 require('telescope').load_extension('fzy_native')
 require('telescope').setup{
@@ -153,9 +154,11 @@ command! -nargs=* RipgrepByType call RipgrepByType( <f-args> )
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({ find_command = {'fd', '--hidden', '--type', 'f'} })<cr>
 nnoremap <leader>fu <cmd>lua require('telescope.builtin').find_files({ find_command = {'fd', '--hidden', '--type', 'f'}, cwd = vim.fn.expand('%:p:h') })<cr>
 "to ignore file name while live_greping
-":lua require'telescope.builtin'.live_grep{only_sort_text = true}
+":lua require'telescope.builtin'.live_grep{}
 nnoremap <leader>f/ <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>f? <cmd>lua require('telescope.builtin').live_grep({ cwd = vim.fn.expand('%:p:h') })<cr>
+nnoremap <leader>f? <cmd>lua require('telescope.builtin').live_grep({ grep_open_files = true })<cr>
+nnoremap <leader>ft <cmd>lua require('telescope.builtin').live_grep({ only_sort_text = true })<cr>
+nnoremap <leader>fu <cmd>lua require('telescope.builtin').live_grep({ cwd = vim.fn.expand('%:p:h') })<cr>
 " nnoremap <leader>fs <cmd>lua require('telescope.builtin').grep_string()<cr>
 "find exact match of a word under the cursor
 nnoremap <leader>fw <cmd>lua require('telescope.builtin').grep_string({ word_match = '-w' })<cr>
