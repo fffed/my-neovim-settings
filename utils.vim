@@ -71,7 +71,7 @@ endfunction
 nmap <Leader>n :call RenameFile()<cr>
 
 "equalize Vim splits that have been munged by some type of resize event.
-augroup highlightYank
+augroup resizeWindow
   au!
   au VimResized * wincmd =
 augroup END
