@@ -20,10 +20,18 @@ hi Whitespace guifg=#723030
 
 hi MatchParen guibg=#787271
 
+hi Conceal guifg=#787271 gui=bold,italic
+
+"git diffs
+" hi diffAdded  guifg=#88aa77  guibg=NONE
+" hi DiffRemoved guifg=#aa7766  guibg=NONE
+hi DiffAdded  guifg=#56d364  guibg=#244032
+hi DiffRemoved guifg=#f85149 guibg=#462c32
+hi DiffChange guifg=#e3b341  guibg=NONE
 
 "gitsigns
-hi diffAdded  guifg=#88aa77  guibg=NONE
-hi DiffRemoved guifg=#aa7766  guibg=NONE
+hi DiffDelete guifg=#f85149
+
 " nvim-tree
 hi NvimTreeFileDirty gui=bold
 hi NvimTreeGitNew gui=bold
