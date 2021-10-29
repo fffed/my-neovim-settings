@@ -3,6 +3,7 @@ nnoremap Y y$
 
 "turn off Help
 nnoremap <F1> <Nop>
+inoremap <F1> <Nop>
 
 "turn off default SPACE behavior
 nnoremap <Space> <Nop>

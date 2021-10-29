@@ -73,7 +73,11 @@ set wildignore+=*/dist*/*,*/**.min.*/,*/node_modules/**/*
 "by default ** only searches 30 directories deep, see :h starstar for more details. 
 set path=.,,,**
 
-"to allow to jump to files with endings .js,ts and .jsx,tsx by `gf`
+"To enable Vim to use ripgrep ( or any other grep program ) as a backend to the grep command
+set grepprg=rg\ --smart-case\ --vimgrep
+" creates a :SearchProject command, makes it so you don't have to escape strings in ripgrep, will tab compete with directories in path.
+command! -nargs=+ -complete=dir -bar SearchProject execute 'silent! grep!'.<q-args>.' | cwindow'
+
 augroup changeLineBreak
   autocmd!
   "width for vertical linebreak
