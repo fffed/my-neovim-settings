@@ -28,7 +28,7 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
+if has("nvim-0.5.0") || has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
 else
@@ -78,8 +78,10 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
-  else
+  elseif (coc#rpc#ready())
     call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
@@ -148,19 +150,19 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <Leader>ca  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <Leader><C-d>  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <Leader>ce  :<C-u>CocList extensions<cr>
+" nnoremap <silent><nowait> <Leader>ce  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <Leader>cc  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <Leader><C-c>  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <Leader>co  :<C-u>CocList outline<cr>
+" nnoremap <silent><nowait> <Leader>co  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <Leader>cs  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent><nowait> <Leader>cs  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <Leader>cj  :<C-u>CocNext<CR>
+" nnoremap <silent><nowait> <Leader>cj  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <Leader>ck  :<C-u>CocPrev<CR>
+" nnoremap <silent><nowait> <Leader>ck  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <Leader>cp  :<C-u>CocListResume<CR>
 
