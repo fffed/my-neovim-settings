@@ -1,3 +1,5 @@
+"enable loading the plugin files for specific file types
+filetype plugin on
 "precede each line with its line
 set number
 "turn on current file name for window title
@@ -81,7 +83,7 @@ command! -nargs=+ -complete=dir -bar SearchProject execute 'silent! grep!'.<q-ar
 augroup changeLineBreak
   autocmd!
   "width for vertical linebreak
-  autocmd BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx set colorcolumn=120
+  autocmd BufNewFile,BufRead *.ts,*.tsx set colorcolumn=120
 augroup END
 
 "highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
@@ -126,7 +128,7 @@ augroup END
 "to allow to jump to files with endings .js,ts and .jsx,tsx by `gf`
 augroup addSuffix
   autocmd!
-  autocmd BufNewFile,BufRead *.js,*.jsx set suffixesadd+=.js,.jsx
+  " autocmd BufNewFile,BufRead *.js,*.jsx set suffixesadd+=.js,.jsx
   autocmd BufNewFile,BufRead *.ts,*.tsx set suffixesadd+=.ts,.tsx,.d.ts
 augroup END
 
