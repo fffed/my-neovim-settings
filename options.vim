@@ -1,5 +1,5 @@
 "enable loading the plugin files for specific file types
-filetype plugin on
+filetype plugin indent on
 "precede each line with its line
 set number
 "turn on current file name for window title
