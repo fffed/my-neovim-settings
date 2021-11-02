@@ -69,7 +69,7 @@ set path+=~/.config/nvim/**
 
 To enable Vim to use ripgrep (or any other grep program) as a backend to the grep command
 ```vim
-set grepprg=rg\ --smart-case\ --vimgrep
+set grepprg=rg\ --smart-case\ --vimgrep\ --hidden
 ```
 And for searching 'data structures' run:
 ```vim
@@ -95,6 +95,19 @@ If you want to only keep the search results from the JavaScript files, you run
 this command: `:Cfilter! html`. This keeps everything except matches that contain
 html in the quickfix list. If you wanted only to keep only the third match, you
 run `:Cfilter Memes` and it keeps only matches containing Memes.
+
+Some search examples:
+- Search for foo in current working directory: `:grep foo`
+- Search for foo in files under src/: `:grep foo src`
+- Search for foo in current file directory: `:grep foo %:h`
+- Search for foo in current file directory’s parent directory: `:grep foo %:h:h`
+- Search for the exact word foo (not foobar): `:grep -w foo` (equivalent to `:grep '\bfoo\b'`).
+- Search for foo in JavaScript files: `:grep foo -t js`
+- Search for foo in files matching a glob: `:grep foo -g '*.js'`
+
+To replace foo with bar across files (asking me to confirm before):
+`:cdo s/foo/bar/gc`.
+And then `:cfdo update`.
 
 Creates a `:SearchProject` command, makes it so you don't have to escape
 strings in ripgrep, will tab compete with directories in path.
