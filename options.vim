@@ -80,12 +80,6 @@ set grepprg=rg\ --smart-case\ --vimgrep
 " creates a :SearchProject command, makes it so you don't have to escape strings in ripgrep, will tab compete with directories in path.
 command! -nargs=+ -complete=dir -bar SearchProject execute 'silent! grep!'.<q-args>.' | cwindow'
 
-augroup changeLineBreak
-  autocmd!
-  "width for vertical linebreak
-  autocmd BufNewFile,BufRead *.ts,*.tsx set colorcolumn=120
-augroup END
-
 "highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 "disable linebreaks by max width by ftplugins
@@ -123,13 +117,6 @@ augroup END
 augroup verticalHelp
   autocmd!
   autocmd FileType help,fugitive wincmd L
-augroup END
-
-"to allow to jump to files with endings .js,ts and .jsx,tsx by `gf`
-augroup addSuffix
-  autocmd!
-  " autocmd BufNewFile,BufRead *.js,*.jsx set suffixesadd+=.js,.jsx
-  autocmd BufNewFile,BufRead *.ts,*.tsx set suffixesadd+=.ts,.tsx,.d.ts
 augroup END
 
 ""to compile plugins.lua whenever the file is saved

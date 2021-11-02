@@ -1,2 +1,2 @@
-setlocal suffixesadd+=.js
+"width for vertical linebreak
 setlocal colorcolumn=120
