@@ -48,8 +48,11 @@ tnoremap <C-v><Esc> <Esc>
 "Delete selected text to BlackHole register
 vnoremap X "_d
 
-"Delete selected text to BlackHole register and paste new text from default register
-vnoremap <Leader>p "_dp
+"Paste with replace visual selection without copying it
+vnoremap <Leader>p "_dP
+
+" Open the current file in the default program
+nmap <leader>x :!xdg-open %<cr><cr>
 
 "Insert current path relative to `cwd`
 cnoremap <C-h> <C-R>=expand('%:h').'/'<CR>
@@ -67,10 +70,11 @@ nnoremap <Right> :vertical resize -2<CR>
 
 "Windows navigation
 nnoremap <Leader>w <C-w>w
-"nnoremap <Leader>wh <C-w>h
-"nnoremap <Leader>wj <C-w>j
-"nnoremap <Leader>wk <C-w>k
-"nnoremap <Leader>wl <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+" By default <CTRL-L>, also clears search highlighting :nohlsearch and updates diffs :diffupdate.
+nnoremap <C-l> <C-w>l
 
 "Windows navigation for terminal
 tnoremap <Leader>wh <c-\><c-n><c-w>h

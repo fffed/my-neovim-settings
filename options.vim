@@ -18,9 +18,11 @@ set diffopt+=vertical
 set cursorline
 "add scroll offset while scrolling
 set scrolloff=5
+"add scroll offset while scrolling horizontally
+set sidescrolloff=6
 "set languages for spell checking
 set spelllang=en_us,ru_yo
-"Override the 'ignorecase' option if the search pattern contains upper case characters. 
+"Override the 'ignorecase' option if the search pattern contains upper case characters.
 set smartcase
 "to visualise tabs, spaces, and line endings
 set list listchars=tab:▸·,trail:·
