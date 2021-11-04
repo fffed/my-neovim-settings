@@ -1,5 +1,26 @@
-"Load the 'base' colorscheme - the one you want to alter
+"#white
+"color_normal = #D2CFCF
 "
+"#black
+"color_dark_0 = #393636
+"color_dark_1 = #222020
+"color_dark_2 = #171616
+"color_dark_3 = #121111
+"
+"#grey
+"color_bright_0 = #5E5959
+"color_bright_1 = #787271
+"color_bright_2 = #9C9695
+"
+"color_hl_1 = #F54646 - red      --bright = #ff4444
+"color_hl_2 = #F5AC46 - yellow   --dull   = #dd9922
+"color_hl_3 = #46BBF5 - blue     --bright = 00afff
+"color_eob  = #723030 - burgundy
+"color_nt   = #9B4A3A - chestnut
+"diff_change= #7788aa
+"
+"
+"Load the 'base' colorscheme - the one you want to alter
 source $HOME/.local/share/nvim/site/pack/packer/opt/vim-monotone/colors/monotone.vim
 "Override the name of the base colorscheme with the name of this custom one
 let g:colors_name = "my-monotone"
