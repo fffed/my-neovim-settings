@@ -19,12 +19,6 @@ let mapleader = " "
 "to move to the last non-blank character
 "nnoremap <Leader>l g_
 
-"close current buffer without closing its window: Close Location windows, if exist, switch to the previous view buffer, and then close the last switched buffer.
-nnoremap <silent> <leader>q :lclose<bar>bprevious<bar>bdelete #<CR>
-
-"open previous buffer in vertical split
-nnoremap <C-p> :vs #<CR>
-
 "Toggle vim's spell checking
 nnoremap <silent> <Leader>s :<C-u>set spell!<CR>
 
@@ -57,10 +51,16 @@ nmap <leader>x :!xdg-open %<cr><cr>
 "Insert current path relative to `cwd`
 cnoremap <C-h> <C-R>=expand('%:h').'/'<CR>
 
-"Move to next buffer
-nnoremap <TAB> :<C-u>bnext<CR>
-"Move to previous buffer
-nnoremap <S-TAB> :<C-u>bprevious<CR>
+"##### WINDOW #####
+"##################
+"Windows navigation
+nnoremap <Leader>w <C-W>w
+nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+" By default <CTRL-L> clears search highlighting :nohlsearch and updates diffs :diffupdate.
+nnoremap <Leader><C-L> <Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
 
 "Resize current window
 nnoremap <Up> :resize +2<CR>
@@ -68,20 +68,26 @@ nnoremap <Down> :resize -2<CR>
 nnoremap <Left> :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
 
-"Windows navigation
-nnoremap <Leader>w <C-w>w
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-" By default <CTRL-L>, also clears search highlighting :nohlsearch and updates diffs :diffupdate.
-nnoremap <C-l> <C-w>l
-
 "Windows navigation for terminal
 tnoremap <Leader>wh <c-\><c-n><c-w>h
 tnoremap <Leader>wj <c-\><c-n><c-w>j
 tnoremap <Leader>wk <c-\><c-n><c-w>k
 tnoremap <Leader>wl <c-\><c-n><c-w>l
+"##################
 
+"##### BUFFER #####
+"##################
+"Move to next buffer
+nnoremap <TAB> <Cmd>bnext<CR>
+"Move to previous buffer
+nnoremap <S-TAB> <Cmd>bprevious<CR>
+
+"close current buffer without closing its window: Close Location windows, if exist, switch to the next view buffer, and then close the last switched buffer.
+nnoremap <silent> <leader>q <Cmd>lclose<bar>bnext<bar>bdelete #<CR>
+
+"open previous buffer in vertical split
+nnoremap <C-p> <Cmd>vs #<CR>
+"##################
 
 "Moving lines up and down https://vim.fandom.com/wiki/Moving_lines_up_or_down
 nnoremap <A-j> :m .+1<CR>==
@@ -93,7 +99,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 "Undo plugin mappings
 "nnoremap <F4> :<C-u>UndotreeToggle<CR>
-nnoremap <F4> :<C-u>MundoToggle<CR>
+nnoremap <F4> <Cmd>MundoToggle<CR>
 "
 "Glow markdown previewer, update before call
 nmap <leader>p :<C-u>up \| Glow<CR>

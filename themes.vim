@@ -5,8 +5,12 @@ set termguicolors
 " let g:gruvbox_contrast_dark='hard'
 " let g:monotone_color = [10, 5, 60]
 " let g:monotone_contrast_factor = -0.8
-" ./colors/my-paper.vim
+" ./colors/my-monotone.vim
 colorscheme my-monotone
+
+" let g:forestbones_darkness='stark'
+" let g:zenwritten_lighten_noncurrent_window = 1
+" colorscheme forestbones
 
 " colorscheme mono
 " packadd! colorbuddy.vim

@@ -5,7 +5,7 @@ source $HOME/.local/share/nvim/site/pack/packer/opt/vim-monotone/colors/monotone
 let g:colors_name = "my-monotone"
 " let g:monotone_emphasize_whitespace = 1 " Emphasize whitespace
 
-" augroup contranst
+" augroup contrast
     " autocmd!
     " autocmd WinLeave * Monotone 120 100 70
     " autocmd WinEnter * Monotone 10 5 60
@@ -21,6 +21,12 @@ hi Whitespace guifg=#723030
 hi MatchParen guibg=#787271
 
 hi Conceal guifg=#787271 gui=bold,italic
+
+hi Todo guifg=#787271 guibg=NONE  gui=bold,italic
+hi EndOfBuffer guifg=#7788aa
+
+hi ftFTSearch guifg=#46bbf5 gui=bold
+hi ftFTSight guifg=#171616 guibg=#5E5959 gui=bold
 
 "git diffs
 " hi diffAdded  guifg=#88aa77  guibg=NONE
@@ -39,6 +45,8 @@ hi NvimTreeGitNew gui=bold
 hi NvimTreeGitDirty guifg=#F5AC46
 hi NvimTreeRootFolder guifg=#9C9695
 hi NvimTreeExecFile guifg=#7788aa
+" hi LuaTreeFolderName guifg=#1e6fcc
+" hi LuaTreeGitNew guifg=#216609
 
 " Telescope
 hi TelescopeSelection      gui=bold                 " selected item
@@ -48,6 +56,7 @@ hi TelescopeMatching       guifg=#F5AC46            " Used for highlighting char
 " Tree-sitter
 hi TSFunction guifg=#D2CFCF guibg=NONE gui=italic,bold cterm=NONE
 hi TSMethod guifg=#D2CFCF guibg=NONE gui=italic cterm=NONE
+" hi TSProperty guifg=#383838 guibg=NONE gui=NONE cterm=NONE
     " hi TSInclude guifg=#7788aa
     " hi TSExport guifg=#7788aa
     " hi TSKeyword guifg=#7788aa
