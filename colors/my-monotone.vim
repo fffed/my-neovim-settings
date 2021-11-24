@@ -26,13 +26,15 @@ source $HOME/.local/share/nvim/site/pack/packer/opt/vim-monotone/colors/monotone
 let g:colors_name = "my-monotone"
 " let g:monotone_emphasize_whitespace = 1 " Emphasize whitespace
 
-" augroup contrast
-    " autocmd!
+augroup contrast
+    autocmd!
     " autocmd WinLeave * Monotone 120 100 70
     " autocmd WinEnter * Monotone 10 5 60
     " autocmd FocusLost * :colorscheme goodwolf
     " autocmd FocusGained * :colorscheme falcon
-" augroup END
+    " autocmd WinEnter * hi LineNr guifg=red
+    " autocmd WinLeave * hi LineNr guifg=green
+augroup END
 
 "set different background for non-active windows
 hi NormalNC guibg=#222020
@@ -46,9 +48,10 @@ hi Conceal guifg=#787271 gui=bold,italic
 hi Todo guifg=#787271 guibg=NONE  gui=bold,italic
 hi EndOfBuffer guifg=#7788aa
 
-hi ftFTSearch guifg=#46bbf5 gui=bold
-hi ftFTSight guifg=#171616 guibg=#5E5959 gui=bold
+" hi ftFTSearch guifg=#46bbf5 gui=bold
+" hi ftFTSight guifg=#171616 guibg=#5E5959 gui=bold
 
+hi MarkSignHL guifg=#46bbf5
 "git diffs
 " hi diffAdded  guifg=#88aa77  guibg=NONE
 " hi DiffRemoved guifg=#aa7766  guibg=NONE

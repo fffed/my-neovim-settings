@@ -22,7 +22,7 @@ return require('packer').startup(function()
   --Use `gcc` to comment out a line (takes a count),
   --`gc` to comment out the target of a motion (for example, `gcap` to comment out a paragraph),
   --`gc` in visual mode to comment out the selection
-  use 'tpope/vim-commentary'
+  -- use 'tpope/vim-commentary'
   --use 'b3nj5m1n/kommentary'
 
   --GIT--
@@ -56,24 +56,22 @@ return require('packer').startup(function()
       -- cmd = {'Conflicted', 'GitNextConflict'}
   }
 
-  --use {
-  --    'junegunn/fzf.vim',
-  --    requires = {'junegunn/fzf', run = './install --all && ln -s $(pwd) ~/.fzf'},
-  --    cmd = { 'Files', 'Buffers', 'RG', 'History', 'GFiles', 'Commits' }
-  --}
-
   use 'sindrets/diffview.nvim'
 
   use {
       'nvim-telescope/telescope.nvim',
       requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, { 'nvim-telescope/telescope-fzy-native.nvim' }}
+      -- requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}}
   }
 
   --telescope plugin for clipboard history
   use {
     "AckslD/nvim-neoclip.lua",
+    requires = {'tami5/sqlite.lua', module = 'sqlite'}, --for persistent history
     config = function()
-        require('neoclip').setup()
+        require('neoclip').setup({
+            enable_persistant_history = false,
+        })
     end,
   }
 
@@ -83,12 +81,29 @@ return require('packer').startup(function()
        -- cmd = {'NvimTreeToggle', 'NvimTreeOpen'},
    }
 
+  -- use{
+  --     'gukz/ftFT.nvim',
+  --     config = function()
+  --         vim.g.ftFT_hl_group = "ftFTSearch"
+  --         vim.g.ftFT_sight_hl_group = "ftFTSight"
+  --
+  --         require("ftFT").setup()
+  --     end
+  --   }
+
+  use {
+      'chentau/marks.nvim',
+      config = function() require('marks').setup {} end
+  }
+
   use {'neoclide/coc.nvim', branch = 'release'}
 
   --view the latest version of the packages you depend on 
   use {
       'vuki656/package-info.nvim' ,
-      ft = { 'json', 'jsonc'},
+      requires = "MunifTanjim/nui.nvim",
+      -- ft = { 'json', 'jsonc'},
+      cmd = { 'PackageInfoShow' },
       config = function() require('package-info').setup() end
     }
 
@@ -98,6 +113,22 @@ return require('packer').startup(function()
       config = function() require('colorizer').setup() end
   }
 
+  use { 'nvim-treesitter/nvim-treesitter', branch = '0.5-compat', run = ':TSUpdate' }
+
+  --use {
+      --'JoosepAlviste/nvim-ts-context-commentstring',
+       -- requires = {'nvim-treesitter/nvim-treesitter'}
+      --ft = { 'javascriptreact', 'typescriptreact' },
+      -- config = function() require('nvim-ts-context-commentstring').setup() end
+  --}
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
+
   --Use treesitter to autoclose and autorename html tag
   use {
       'windwp/nvim-ts-autotag',
@@ -105,15 +136,6 @@ return require('packer').startup(function()
       ft = { 'html', 'javascriptreact', 'typescriptreact' },
       -- config = function() require('nvim-ts-autotag').setup() end
   }
-
-  use {
-      'JoosepAlviste/nvim-ts-context-commentstring',
-       -- requires = {'nvim-treesitter/nvim-treesitter'}
-      ft = { 'javascriptreact', 'typescriptreact' },
-      -- config = function() require('nvim-ts-context-commentstring').setup() end
-  }
-
-  use { 'nvim-treesitter/nvim-treesitter', branch = '0.5-compat', run = ':TSUpdate' }
 
   use {
       'nvim-treesitter/playground',
@@ -133,7 +155,10 @@ return require('packer').startup(function()
   --     }
 
   -- use 'alpertuna/vim-header'
-  use 'antoyo/vim-licenses'
+    use {
+        'antoyo/vim-licenses',
+        ft = {'javascript', 'javascriptreact', 'typescript', 'typescriptreact'},
+    }
 
   --md preview (depends on glow)
   use {'npxbr/glow.nvim', opt = true,  ft = { 'markdown' } }
@@ -151,6 +176,18 @@ return require('packer').startup(function()
   -- use {'tanvirtin/nvim-monokai'}
   -- use {'ful1e5/onedark.nvim'}
   use {'projekt0n/github-nvim-theme'}
+  use {'RishabhRD/nvim-rdark'}
+  use {'shaeinst/roshnivim-cs'}
+
+  use {
+    'mrjones2014/lighthaus.nvim',
+    --has a kitty theme
+    -- config = function() require('lighthaus').setup({ bg_dark = true, }) end
+  }
+  use {
+    'mcchrish/zenbones.nvim',
+    requires = 'rktjmp/lush.nvim',
+  }
 
   -- use {'gruvbox-community/gruvbox', opt = true}
   use {'wbthomason/vim-nazgul', opt = true}
@@ -161,19 +198,28 @@ return require('packer').startup(function()
   use {'NieTiger/halcyon-neovim', opt = true}
   use {'YorickPeterse/vim-paper', opt = true}
   use {'sjl/badwolf', opt = true}
-  use {'mcchrish/zenbones.nvim', opt = true}
   use {'pradyungn/Mountain', rtp = 'vim', opt = true}
-  use {'habamax/vim-bronzage', opt = true}
+  use {'aditya-azad/candle-grey', opt = true}
+  use {'stefanvanburen/rams.vim', opt = true}
+  use {'fxn/vim-monochrome', opt = true}
+  use {'noahfrederick/vim-hemisu', opt = true}
+  use {'cloudhead/shady.vim', opt = true}
+  use {'andreasvc/vim-256noir', opt = true}
+  use {'rking/vim-detailed', opt = true}
+  use {'danishprakash/vim-yami', opt = true}
+  use {'vv9k/bogster', opt = true}
+  -- use {'frenzyexists/aquarium-vim', opt = true}
+  -- use {'habamax/vim-bronzage', opt = true}
+  -- use {'sainnhe/edge', opt = true}
+  -- use {'sainnhe/forest-night', opt = true}
+  -- use {'sainnhe/gruvbox-material', opt = true}
   -- use {'reewr/vim-monokai-phoenix', opt = true}
   -- use {'mhartington/oceanic-next', opt = true}
-  -- use {'sainnhe/gruvbox-material', opt = true}
-  -- use {'sainnhe/forest-night', opt = true}
   -- use {'sainnhe/sonokai', opt = true}
-  -- use {'sainnhe/edge', opt = true}
 
   --STATUS LINE--
   use {
-    'hoob3rt/lualine.nvim',
+    'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
   }
 

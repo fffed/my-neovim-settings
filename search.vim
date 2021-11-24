@@ -130,6 +130,11 @@ require('telescope').setup{
                 mirror = true,
             },
         },
+        mappings = {
+            n = {
+                ['<Del>'] = require('telescope.actions').delete_buffer,
+            },
+        },
     },
     extensions = {
         fzy_native = {

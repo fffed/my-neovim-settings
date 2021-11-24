@@ -5,6 +5,11 @@ To see where NVIM store its files
 :echo $VIMRUNTIME
 ```
 
+To open the configuration file:
+```vim
+:edit $MYVIMRC
+```
+
 # LAUNCH
 
 if you have ever tried nvim -u min.vim to debug some project and were
@@ -16,7 +21,7 @@ This behavior differs from `--no-plugin` in that it will allow you to run
 plugins that you manually add to your rtp.
 
 
-# COPYING FILES
+# FILES
 
 Copy the entire file into the current file
 ```
@@ -38,6 +43,21 @@ Copy from some random place in the file
 :read !sed -n 30,50p some_file.txt
 ```
 
+Put into buffer output from external command:
+```
+:r!ls
+```
+
+Pretty printing the current json content in a buffer:
+```
+:%!jq
+```
+
+After renaming a file if the files are exactly the same (content wise), and by
+that I mean a hash on the content is the same, you can use `:rundo <undofile>`
+to read undofile from the old one.
+
+
 # NAVIGATING
 
 
@@ -57,6 +77,34 @@ Search for {pattern} in the files {file} ... and set the error list to the match
 
 # SEARCHING
 
+## Content
+To only find words that end in "end" use `\>`:
+```
+/end/>
+```
+Similarly `\<` only matches at the beginning of a word.
+
+Thus to search for the word "the" only:
+```
+/\<the\>
+```
+This does not match "there" or "soothe".
+
+`*` and `#` commands use these start-of-word and end-of-word markers to only find whole words.
+We can use `g*` and `g#` to match partial words.
+
+
+## Help
+Use `:helpgrep` to search in all help pages (and also of any installed plugins).
+To search for a topic:
+```vim
+:helpgrep topic
+```
+This takes you to the first match. To go to the next one: `:cnext`.
+All matches are available in the quickfix window which can be opened with: `:copen`
+
+
+## Global
 The next option allows to use `:find {pattern}` to search a file name with
 TAB-completion in the NVIM .config directory
 ```vim
@@ -115,7 +163,25 @@ strings in ripgrep, will tab compete with directories in path.
 command! -nargs=+ -complete=dir -bar SearchProject execute 'silent! grep!'.<q-args>.' | cwindow'
 ```
 
+# HIGHLIGHTING
+
+To view groups currently active in vim/nvim:
+```vim
+:so $VIMRUNTIME/syntax/hitest.vim
+```
+
+# DIFF
+Open two files in a split, then run for each buffer `:diffthis`
+or better - `:windo diffthis`
+
+To turn off diffs run `:diffoff`
+
+
 # GIT:FUGITIVE
+- LOCAL - the head for the file(s) from the current branch on the machine that you are using.
+- REMOTE - the head for files(s) from a remote location that you are trying to merge into your LOCAL branch.
+- BASE - the common ancestor(s) of LOCAL and REMOTE.
+- MERGED - the tag / HEAD object after the merge - this is saved as a new commit.
 
 To view file changes in split mode press `dv`.
 

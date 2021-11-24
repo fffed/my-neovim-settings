@@ -2,13 +2,14 @@
     "diagnostic.virtualText": false,
     "coc.preferences.formatOnSaveFiletypes": [
         "css",
-        "markdown",
+        "scss",
         "html",
         "javascript",
         "javascriptreact",
         "typescript",
         "typescriptreact"
     ],
+    "suggest.minTriggerInputLength": 2,
     "cSpell.userWords": [
         "epam",
         "gruvbox"
@@ -17,8 +18,14 @@
     "typescript.preferences.importModuleSpecifier": "non-relative",
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "javascript.preferences.importModuleSpecifier": "non-relative",
-    "eslint.autoFixOnSave": true,
+    "eslint.autoFixOnSave": false,
+    "eslint.lintTask.options": ["-c /home/fiodar_fiodarau/telescope/supernova/client/packages/telescope-scripts/configs/eslint.config.js"],
+    "eslint.options": {
+        "overrideConfigFile": "/home/fiodar_fiodarau/telescope/supernova/client/packages/telescope-scripts/configs/eslint.config.js"
+    },
     "stylelintplus.cssInJs": true,
+    "prettier.tabWidth": 2,
+    "prettier.printWidth": 120,
     "yank.list.maxsize": 100,
     "yank.highlight.duration": 300,
     "yank.highlight.enable": false

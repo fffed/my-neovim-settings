@@ -17,9 +17,9 @@ set diffopt+=vertical
 "highlighting of the current line
 set cursorline
 "add scroll offset while scrolling
-set scrolloff=5
+set scrolloff=4
 "add scroll offset while scrolling horizontally
-set sidescrolloff=6
+set sidescrolloff=5
 "set languages for spell checking
 set spelllang=en_us,ru_yo
 "Override the 'ignorecase' option if the search pattern contains upper case characters.
@@ -56,6 +56,9 @@ set noshowmode
 
 "wrap lines at convenient points, avoid wrapping a line in the middle of a word(only for when wrap is enabled)
 "set linebreak
+
+"remove underscore "_" from key words so moving by `w` consider it as delimiter
+set iskeyword-=_
 
 "set completion mode to complete longest common string, then each full match
 set wildmode=longest,full

@@ -1,6 +1,12 @@
 --STATUS LINE
+local custom_seoul256 = require'lualine.themes.seoul256'
+-- Change the background of lualine_c section for normal mode
+custom_seoul256.normal.c.bg = '#222020'
+custom_seoul256.normal.a.bg = '#787271'
+custom_seoul256.insert.a.bg = '#787271'
+
 require('lualine').setup{
-    options = { theme = 'seoul256' },
+    options = { theme = custom_seoul256 },
     -- options = { theme = 'zenwritten_dark' },
     sections = {
         lualine_b = { 'branch', 'diff' },
@@ -8,7 +14,8 @@ require('lualine').setup{
             'filename',
             path = 1,
             -- full_path = true,
-         }, 'ConflictedVersion' }
+         }, 'ConflictedVersion' },
+        lualine_x = { 'diagnostics' },
     },
     extensions = { 'fzf', 'fugitive' }
 }

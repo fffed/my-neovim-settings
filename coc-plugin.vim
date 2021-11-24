@@ -11,9 +11,10 @@ let g:coc_global_extensions = [
             \'coc-stylelintplus',
             \'coc-spell-checker',
             \'coc-react-refactor']
+            " \'coc-prettier',
 
 " Give more space for displaying messages.
-set cmdheight=2
+" set cmdheight=2
 
 " Some servers have issues with backup files, see #649.
 set nobackup
